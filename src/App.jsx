@@ -156,7 +156,7 @@ function App() {
             <img 
               alt="Logo" 
               className="h-12 w-auto object-contain" 
-              src="/logo.png"
+              src="./logo.png"
             />
             <div className="font-mono text-base md:text-lg font-semibold tracking-widest text-gray-800 uppercase">The Code Consortium</div>
           </div>
@@ -588,7 +588,7 @@ function App() {
                 <img 
                   alt="Fintech Dashboard" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
-                  src="/project-1.jpg"
+                  src="./project-1.jpg"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
@@ -610,7 +610,7 @@ function App() {
                 <img 
                   alt="E-Commerce Build" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
-                  src="/project-2.jpg"
+                  src="./project-2.jpg"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
@@ -632,7 +632,7 @@ function App() {
                 <img 
                   alt="AI Booking System" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
-                  src="/project-3.jpg"
+                  src="./project-3.jpg"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
