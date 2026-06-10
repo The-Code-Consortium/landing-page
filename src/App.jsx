@@ -18,14 +18,14 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
-  }
-};
+// const itemVariants = {
+//   hidden: { opacity: 0, y: 15 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+//   }
+// };
 
 const pathVariants = {
   hidden: { pathLength: 0 },
