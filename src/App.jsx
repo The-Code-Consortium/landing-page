@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import FintechDashboard from './FintechDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -42,7 +42,6 @@ const pathVariants = {
 };
 
 function LandingPage() {
-  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
