@@ -1,5 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import FintechDashboard from './FintechDashboard';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+const MotionLink = motion(Link);
 
 const globalRevealProps = {
   initial: { opacity: 0, y: 30 },
@@ -35,80 +41,9 @@ const pathVariants = {
   }
 };
 
-const chars = '!<>-_\\/[]{}—=+*^?#________ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-function ScrambleLink({ href, onClick, children }) {
-  const text = children.toUpperCase();
-  const [displayText, setDisplayText] = useState(text);
-  const [scrambledIndices, setScrambledIndices] = useState(new Set());
-  const intervalRef = useRef(null);
-
-  const startScramble = () => {
-    let iterations = 0;
-    clearInterval(intervalRef.current);
-
-    intervalRef.current = setInterval(() => {
-      const newIndices = new Set();
-      const scrambledWord = text.split('').map((char, index) => {
-        if (char === ' ') return ' ';
-
-        if (index < iterations) {
-          return text[index];
-        }
-
-        newIndices.add(index);
-        return chars[Math.floor(Math.random() * chars.length)];
-      }).join('');
-
-      setDisplayText(scrambledWord);
-      setScrambledIndices(newIndices);
-
-      if (iterations >= text.length) {
-        clearInterval(intervalRef.current);
-        setDisplayText(text);
-        setScrambledIndices(new Set());
-      }
-
-      iterations += text.length / 10;
-    }, 35);
-  };
-
-  const stopScramble = () => {
-    clearInterval(intervalRef.current);
-    setDisplayText(text);
-    setScrambledIndices(new Set());
-  };
-
-  useEffect(() => {
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  return (
-    <a
-      href={href}
-      onClick={onClick}
-      onMouseEnter={startScramble}
-      onMouseLeave={stopScramble}
-      className="font-mono uppercase text-sm text-gray-500 hover:text-black transition-colors duration-200 cursor-pointer select-none tracking-widest"
-    >
-      {displayText.split('').map((char, index) => {
-        const isScrambled = scrambledIndices.has(index);
-        return (
-          <span
-            key={index}
-            className={isScrambled ? 'text-blue-600 font-bold' : 'text-inherit'}
-          >
-            {char}
-          </span>
-        );
-      })}
-    </a>
-  );
-}
-
-function App() {
+function LandingPage() {
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('hero');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -150,103 +85,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col relative bg-gray-50 text-black font-sans antialiased overflow-x-hidden selection:bg-black selection:text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-300 h-20">
-        <div className="max-w-screen-2xl mx-auto h-full flex justify-between items-center px-6 md:px-12">
-          <div className="flex items-center gap-4">
-            <img
-              alt="Logo"
-              className="h-12 w-auto object-contain"
-              src="./logo.png"
-            />
-            <div className="font-mono text-base md:text-lg font-semibold tracking-widest text-gray-800 uppercase">The Code Consortium</div>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-8">
-            <ScrambleLink
-              href="#about"
-              onClick={(e) => { e.preventDefault(); handleScrollTo('about'); }}
-            >
-              About
-            </ScrambleLink>
-            <ScrambleLink
-              href="#services"
-              onClick={(e) => { e.preventDefault(); handleScrollTo('services'); }}
-            >
-              Services
-            </ScrambleLink>
-            <ScrambleLink
-              href="#showcase"
-              onClick={(e) => { e.preventDefault(); handleScrollTo('showcase'); }}
-            >
-              Showcase
-            </ScrambleLink>
-            <ScrambleLink
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleScrollTo('contact'); }}
-            >
-              Contact
-            </ScrambleLink>
-            <a
-              className="px-6 py-2 font-mono uppercase text-sm hover:bg-black hover:text-white transition-colors bg-black text-white"
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleScrollTo('contact'); }}
-            >
-              Inquire
-            </a>
-          </div>
-
-          <button
-            className="md:hidden text-black focus:outline-none"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            <span className="material-symbols-outlined">
-              {isMobileMenuOpen ? 'close' : 'menu'}
-            </span>
-          </button>
-        </div>
-
-        {/* Mobile Navigation Drawer */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-300 z-50 flex flex-col p-6 space-y-4 shadow-lg">
-            <a
-              className="font-mono uppercase text-sm text-gray-500 hover:text-black transition-colors"
-              href="#about"
-              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); handleScrollTo('about'); }}
-            >
-              About
-            </a>
-            <a
-              className="font-mono uppercase text-sm text-gray-500 hover:text-black transition-colors"
-              href="#services"
-              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); handleScrollTo('services'); }}
-            >
-              Services
-            </a>
-            <a
-              className="font-mono uppercase text-sm text-gray-500 hover:text-black transition-colors"
-              href="#showcase"
-              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); handleScrollTo('showcase'); }}
-            >
-              Showcase
-            </a>
-            <a
-              className="font-mono uppercase text-sm text-gray-500 hover:text-black transition-colors"
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); handleScrollTo('contact'); }}
-            >
-              Contact
-            </a>
-            <a
-              className="px-6 py-3 font-mono uppercase text-sm text-center bg-black text-white hover:bg-white hover:text-black border border-black transition-colors"
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); handleScrollTo('contact'); }}
-            >
-              Inquire
-            </a>
-          </div>
-        )}
-      </nav>
+      <Navbar />
 
       {/* Scroll Tracker Dot Indicators */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-5 pr-4" id="scroll-tracker">
@@ -578,16 +417,16 @@ function App() {
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-300">
-            <motion.a
+            <MotionLink
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
-              href="#"
+              to="/project/fintech-dashboard"
               {...globalRevealProps}
             >
               <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
                 <img
                   alt="Fintech Dashboard"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  src="./project-1.jpg"
+                  src="./project-2.jpg"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
@@ -599,7 +438,7 @@ function App() {
                   DETAILS <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                 </div>
               </div>
-            </motion.a>
+            </MotionLink>
             <motion.a
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
               href="#"
@@ -609,7 +448,7 @@ function App() {
                 <img
                   alt="E-Commerce Build"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  src="./project-2.jpg"
+                  src="./project-3.jpg"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
@@ -631,7 +470,7 @@ function App() {
                 <img
                   alt="AI Booking System"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  src="./project-3.jpg"
+                  src="./project-1.jpg"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
@@ -712,22 +551,18 @@ function App() {
         </section>
       </main>
 
-      <footer className="max-w-screen-2xl mx-auto w-full border-t border-l border-r border-gray-300 bg-white">
-        <div className="p-6 md:p-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-          <div className="font-bold text-xl tracking-tight uppercase">
-            The Code Consortium
-          </div>
-          <div className="flex flex-wrap gap-8 font-mono text-xs uppercase">
-            <a className="text-gray-500 hover:text-black transition-colors" href="#">Privacy Policy</a>
-            <a className="text-gray-500 hover:text-black transition-colors" href="#">Terms of Service</a>
-          </div>
-          <div className="font-mono text-xs text-gray-500 uppercase">
-            © 2026 The Code Consortium.<br className="md:hidden" /> Built with architectural precision.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/project/fintech-dashboard" element={<FintechDashboard />} />
+      </Routes>
+    </Router>
+  );
+}
