@@ -1,6 +1,14 @@
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+const globalRevealProps = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: false, amount: 0.3 },
+  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
+};
 
 const FintechDashboard = () => {
     // This recreates the smooth hover effect from your script tag
@@ -14,42 +22,102 @@ const FintechDashboard = () => {
             <Navbar />
 
             <main className="pt-16">
-                {/* Title Section: Ivory Background */}
-                <section className="px-8 md:px-16 py-32 border-b border-gray-200 bg-[#FAF9F6]">
-                    <div className="max-w-[1440px] mx-auto">
-                        <h1 className="font-['Cormorant_Garamond',serif] text-5xl md:text-[112px] leading-tight md:leading-[0.85] italic font-light tracking-tight mb-12 text-black max-w-5xl">
+                {/* Title & Showcase Section: Ivory Background with Aurora Glow */}
+                <section className="relative px-8 md:px-16 pt-32 pb-32 border-b border-gray-200 bg-[#FAF9F6] overflow-hidden">
+                    <motion.div
+                        className="absolute top-[-20%] right-[-10%] w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle_at_center,rgba(51,95,130,0.5)_0%,transparent_70%)] pointer-events-none"
+                        style={{ filter: "blur(140px)" }}
+                        animate={{
+                            x: [0, 80, -40, 0],
+                            y: [0, -50, 40, 0],
+                            scale: [1, 1.15, 0.9, 1],
+                        }}
+                        transition={{
+                            duration: 25,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+                    <motion.div
+                        className="absolute bottom-[-15%] left-[-15%] w-[950px] h-[950px] rounded-full bg-[radial-gradient(circle_at_center,rgba(163,101,74,0.5)_0%,transparent_75%)] pointer-events-none"
+                        style={{ filter: "blur(150px)" }}
+                        animate={{
+                            x: [0, -90, 50, 0],
+                            y: [0, 40, -60, 0],
+                            scale: [1, 0.85, 1.1, 1],
+                        }}
+                        transition={{
+                            duration: 28,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+                    <motion.div
+                        className="absolute top-[20%] left-[20%] w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(78,98,118,0.45)_0%,transparent_70%)] pointer-events-none"
+                        style={{ filter: "blur(130px)" }}
+                        animate={{
+                            x: [0, 40, -30, 0],
+                            y: [0, 50, -40, 0],
+                            scale: [1, 1.1, 0.95, 1],
+                        }}
+                        transition={{
+                            duration: 22,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+                    
+                    <div className="max-w-[1440px] mx-auto relative z-10">
+                        <motion.h1 
+                            className="font-['Cormorant_Garamond',serif] text-5xl md:text-[112px] leading-tight md:leading-[0.85] italic font-light tracking-tight mb-12 text-black max-w-5xl"
+                            {...globalRevealProps}
+                        >
                             Fintech Dashboard
-                        </h1>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                            <p className="text-[13px] font-mono text-gray-600 max-w-2xl border-l border-gray-300 pl-8 uppercase tracking-[0.2em] leading-relaxed italic">
+                        </motion.h1>
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                            <motion.p 
+                                className="text-[13px] font-mono text-gray-600 max-w-2xl border-l border-gray-300 pl-8 uppercase tracking-[0.2em] leading-relaxed italic"
+                                {...globalRevealProps}
+                            >
                                 A comprehensive architectural overhaul prioritizing data density and sub-millisecond visual feedback.
-                            </p>
-                            <div className="text-[11px] font-mono text-gray-500 flex gap-4 uppercase tracking-widest">
+                            </motion.p>
+                            <motion.div 
+                                className="text-[11px] font-mono text-gray-500 flex gap-4 uppercase tracking-widest"
+                                {...globalRevealProps}
+                            >
                                 <span>[ EST. 2024 ]</span>
                                 <span>[ ARCHIVE REF: 042 ]</span>
-                            </div>
+                            </motion.div>
                         </div>
-                    </div>
-                </section>
 
-                {/* Hero Showcase */}
-                <section className="relative px-8 md:px-16 py-32 overflow-hidden bg-[#FAF9F6] border-b border-gray-200">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,71,0.03)_0%,rgba(252,249,243,0)_70%)]"></div>
-                    <div className="max-w-[1440px] mx-auto relative z-10 border border-gray-200 p-1 bg-white shadow-xl">
-                        <div className="relative">
-                            <img
-                                alt="Fintech Dashboard Main Screen"
-                                className="w-full aspect-[16/9] object-cover opacity-100 transition-opacity duration-700"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhdE2z1QjpWMD0DMSVsvDMJ3HvDd2K4dvOSg4zxHq90QyCtBVoFOylWx5pARVbBtyP_zDse4yxR641qlLJNaLITQiIhMiTXPeDCr4YHqhgvtCJS6eHGhzZYhRgAonzI5eG8nPBhHNVSHYTnhplfeA4v6ITXNKbpRAC_giXP9Dfs4orBX1aq6tjlt5Kc8ZQaHRI_-KZ3s-An6r602Q5dxppA68qnHIIuFzUJrHisaV3cXa2-FOH_mKgI7E7R79PGEw3lIvl20FAI4rY"
-                            />
-                            <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.05)] pointer-events-none"></div>
-                        </div>
+                        <motion.div
+                            className="border border-gray-200 p-1 bg-white shadow-xl relative z-10"
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.1 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                            <div className="relative">
+                                <img
+                                    alt="Fintech Dashboard Main Screen"
+                                    className="w-full aspect-[16/9] object-cover opacity-100 transition-opacity duration-700"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhdE2z1QjpWMD0DMSVsvDMJ3HvDd2K4dvOSg4zxHq90QyCtBVoFOylWx5pARVbBtyP_zDse4yxR641qlLJNaLITQiIhMiTXPeDCr4YHqhgvtCJS6eHGhzZYhRgAonzI5eG8nPBhHNVSHYTnhplfeA4v6ITXNKbpRAC_giXP9Dfs4orBX1aq6tjlt5Kc8ZQaHRI_-KZ3s-An6r602Q5dxppA68qnHIIuFzUJrHisaV3cXa2-FOH_mKgI7E7R79PGEw3lIvl20FAI4rY"
+                                />
+                                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.05)] pointer-events-none"></div>
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
 
                 {/* Technical Split Panel: Deep Slate Background */}
                 <section className="bg-[#1e293b] border-b border-white/10 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px]">
-                    <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[700px]">
+                    <motion.div
+                        className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[700px]"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
                         {/* Left Column: Narratives */}
                         <div className="md:col-span-8 p-8 md:p-16 border-r border-white/10 space-y-24">
                             <div className="space-y-6">
@@ -104,12 +172,18 @@ const FintechDashboard = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </section>
 
                 {/* Multi-Feature Gallery: Dark Charcoal Background */}
                 <section className="px-8 md:px-16 py-32 bg-[#131313]">
-                    <div className="max-w-[1440px] mx-auto">
+                    <motion.div
+                        className="max-w-[1440px] mx-auto"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
                         <div className="flex items-center gap-8 mb-24">
                             <h3 className="font-['Cormorant_Garamond',serif] text-5xl md:text-7xl italic text-white whitespace-nowrap">Module Architecture</h3>
                             <div className="h-px bg-white/10 w-full"></div>
@@ -173,7 +247,7 @@ const FintechDashboard = () => {
                             </div>
 
                         </div>
-                    </div>
+                    </motion.div>
                 </section>
             </main>
 
