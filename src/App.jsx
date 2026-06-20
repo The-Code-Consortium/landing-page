@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import FintechDashboard from './FintechDashboard';
+import EcommerceBuild from './EcommerceBuild';
+import AIBookingSystem from './AIBookingSystem';
+import TermsOfService from './pages/TermsOfService';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -438,9 +442,9 @@ function LandingPage() {
                 </div>
               </div>
             </MotionLink>
-            <motion.a
+            <MotionLink
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
-              href="#"
+              to="/project/ecommerce-build"
               {...globalRevealProps}
             >
               <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
@@ -459,10 +463,10 @@ function LandingPage() {
                   DETAILS <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                 </div>
               </div>
-            </motion.a>
-            <motion.a
+            </MotionLink>
+            <MotionLink
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
-              href="#"
+              to="/project/ai-booking-system"
               {...globalRevealProps}
             >
               <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
@@ -481,7 +485,7 @@ function LandingPage() {
                   DETAILS <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                 </div>
               </div>
-            </motion.a>
+            </MotionLink>
           </div>
         </section>
 
@@ -561,6 +565,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/project/fintech-dashboard" element={<FintechDashboard />} />
+        <Route path="/project/ecommerce-build" element={<EcommerceBuild />} />
+        <Route path="/project/ai-booking-system" element={<AIBookingSystem />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
     </Router>
   );

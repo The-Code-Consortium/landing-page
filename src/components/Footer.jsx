@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -8,8 +8,8 @@ export default function Footer() {
           The Code Consortium
         </div>
         <div className="flex flex-wrap gap-8 font-mono text-xs uppercase">
-          <a className="text-gray-500 hover:text-black transition-colors" href="#">Privacy Policy</a>
-          <a className="text-gray-500 hover:text-black transition-colors" href="#">Terms of Service</a>
+          <Link className="text-gray-500 hover:text-black transition-colors" to="/privacy">Privacy Policy</Link>
+          <Link className="text-gray-500 hover:text-black transition-colors" to="/terms">Terms of Service</Link>
         </div>
         <div className="font-mono text-xs text-gray-500 uppercase">
           © 2026 The Code Consortium.<br className="md:hidden" /> Built with architectural precision.
