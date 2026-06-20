@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import RelatedProjects from './components/RelatedProjects';
 
 const globalRevealProps = {
     initial: { opacity: 0, y: 30 },
@@ -497,6 +498,7 @@ const AIBookingSystem = () => {
                 </section>
             </main>
 
+            <RelatedProjects currentProject="booking" />
             <Footer />
         </div>
     );
