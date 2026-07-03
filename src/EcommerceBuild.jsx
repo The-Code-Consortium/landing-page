@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import RelatedProjects from './components/RelatedProjects';
@@ -34,10 +34,28 @@ const moduleSubTabs = {
 const EcommerceBuild = () => {
     const [activeModule, setActiveModule] = useState('workspace');
     const [activeSubTab, setActiveSubTab] = useState('Dashboard');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0); // Ensures the page loads at the top
     }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
+        return () => clearTimeout(timer);
+    }, []);
+
+    const { scrollY } = useScroll();
+    const opacity1 = useTransform(scrollY, [200, 500], [0, 1]);
+    const y1 = useTransform(scrollY, [200, 500], [100, 0]);
+    const opacity2 = useTransform(scrollY, [450, 750], [0, 1]);
+    const y2 = useTransform(scrollY, [450, 750], [100, 0]);
+    const opacity3 = useTransform(scrollY, [700, 1000], [0, 1]);
+    const y3 = useTransform(scrollY, [700, 1000], [100, 0]);
+
+    const textLetters = Array.from("THE CODE CONSORTIUM");
 
     const handleModuleChange = (moduleId) => {
         setActiveModule(moduleId);
@@ -51,7 +69,12 @@ const EcommerceBuild = () => {
         return (
             <div className="flex-grow flex flex-col justify-between font-mono select-none h-full min-h-0 text-white gap-6">
                 {/* Hero Banner */}
-                <div className="w-full bg-gradient-to-r from-blue-950/40 via-slate-900/40 to-blue-900/30 border border-blue-500/10 p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between shadow-inner relative overflow-hidden">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isLoading ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
+                    className="w-full bg-gradient-to-r from-blue-950/40 via-slate-900/40 to-blue-900/30 border border-blue-500/10 p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between shadow-inner relative overflow-hidden"
+                >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/10 rounded-full blur-2xl pointer-events-none"></div>
                     <div className="mb-4 md:mb-0">
                         <h2 className="text-2xl font-bold text-white tracking-tight font-sans">Command Center</h2>
@@ -69,10 +92,15 @@ const EcommerceBuild = () => {
                             Tuesday, 23 June 2026
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* CORE INFRASTRUCTURE Section */}
-                <div className="flex-grow flex flex-col justify-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isLoading ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+                    className="flex-grow flex flex-col justify-center"
+                >
                     <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-3 block font-sans">CORE INFRASTRUCTURE</span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         {/* Card 1: Client Operations */}
@@ -135,10 +163,15 @@ const EcommerceBuild = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Bottom Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isLoading ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-auto"
+                >
                     {/* Total Active Staff */}
                     <div className="bg-[#121826]/30 border border-white/5 p-4 rounded-xl flex items-center justify-between">
                         <div>
@@ -174,7 +207,7 @@ const EcommerceBuild = () => {
                         </div>
                         <span className="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Optimal</span>
                     </div>
-                </div>
+                </motion.div>
             </div>
         );
     };
@@ -864,88 +897,97 @@ const EcommerceBuild = () => {
         );
     };
 
-    return (
-        <div className="font-sans text-[#151515] overflow-x-hidden selection:bg-black selection:text-white bg-[#FAF9F6] min-h-screen">
-
-            <Navbar />
-
-            <main className="pt-16">
-                {/* Title & Showcase Section: Ivory Background with Aurora Glow */}
-                <section className="relative px-8 md:px-16 pt-32 pb-32 border-b border-gray-200 bg-[#FAF9F6] overflow-hidden">
-                    {/* Drifting radial gradients (Aurora effect) with cool corporate blue/indigo/slate tones */}
-                    <motion.div
-                        className="absolute top-[-20%] right-[-10%] w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.45)_0%,transparent_70%)] pointer-events-none"
-                        style={{ filter: "blur(140px)" }}
-                        animate={{
-                            x: [0, 80, -40, 0],
-                            y: [0, -50, 40, 0],
-                            scale: [1, 1.15, 0.9, 1],
-                        }}
-                        transition={{
-                            duration: 25,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
-                    <motion.div
-                        className="absolute bottom-[-15%] left-[-15%] w-[950px] h-[950px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.5)_0%,transparent_75%)] pointer-events-none"
-                        style={{ filter: "blur(150px)" }}
-                        animate={{
-                            x: [0, -90, 50, 0],
-                            y: [0, 40, -60, 0],
-                            scale: [1, 0.85, 1.1, 1],
-                        }}
-                        transition={{
-                            duration: 28,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
-                    <motion.div
-                        className="absolute top-[20%] left-[20%] w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.4)_0%,transparent_70%)] pointer-events-none"
-                        style={{ filter: "blur(130px)" }}
-                        animate={{
-                            x: [0, 40, -30, 0],
-                            y: [0, 50, -40, 0],
-                            scale: [1, 1.1, 0.95, 1],
-                        }}
-                        transition={{
-                            duration: 22,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
-
-                    <div className="max-w-[1440px] mx-auto relative z-10">
-                        <motion.h1
-                            className="font-['Cormorant_Garamond',serif] text-5xl md:text-[112px] leading-tight md:leading-[0.85] italic font-light tracking-tight mb-12 text-black max-w-5xl"
-                            {...globalRevealProps}
+    if (isLoading) {
+        return (
+            <div className="fixed inset-0 z-[100] bg-[#0b0f19] flex items-center justify-center font-mono select-none">
+                <div className="flex gap-1 overflow-hidden">
+                    {textLetters.map((letter, i) => (
+                        <motion.span
+                            key={i}
+                            initial={{ y: "100%", opacity: 0 }}
+                            animate={{ y: 0, opacity: [0.2, 1, 0.2] }}
+                            transition={{
+                                y: { duration: 0.5, ease: "easeOut" },
+                                opacity: {
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: i * 0.05
+                                }
+                            }}
+                            className="text-white text-xs md:text-sm tracking-widest font-bold font-sans"
                         >
-                            HR Information System
-                        </motion.h1>
-                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-                            <motion.p
-                                className="text-[13px] font-mono text-gray-600 max-w-2xl border-l border-gray-300 pl-8 uppercase tracking-[0.2em] leading-relaxed italic"
-                                {...globalRevealProps}
-                            >
-                                A high-performance enterprise workforce management architecture prioritizing database consistency and seamless employee lifecycle synchronization.
-                            </motion.p>
-                            <motion.div
-                                className="text-[11px] font-mono text-gray-500 flex gap-4 uppercase tracking-widest"
-                                {...globalRevealProps}
-                            >
-                                <span>[ EST. 2025 ]</span>
-                                <span>[ ARCHIVE REF: 043 ]</span>
-                            </motion.div>
-                        </div>
+                            {letter === " " ? "\u00A0" : letter}
+                        </motion.span>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
+    return (
+        <div className="font-sans text-white overflow-x-hidden selection:bg-blue-600 selection:text-white bg-[#0b0f19] min-h-screen">
+
+            <Navbar isDarkTheme={true} hideOnScroll={true} />
+
+            <main className="pt-24">
+                {/* Hero Showcase Section with Backlight Starburst & Scale-in animation */}
+                <section className="relative px-8 md:px-16 pt-10 pb-20 overflow-hidden flex items-center justify-center min-h-[85vh] bg-[#0b0f19]">
+                    
+                    {/* Cinematic Starburst Central Light Splash Effect */}
+                    <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none overflow-hidden">
+                        {/* Inner Core */}
+                        <motion.div
+                            initial={{ scale: 0.1, opacity: 0 }}
+                            animate={isLoading ? { scale: 0.1, opacity: 0 } : { scale: [0.1, 1.8, 1.2], opacity: [0, 1, 0] }}
+                            transition={{ duration: 1.6, ease: "easeOut", times: [0, 0.4, 1] }}
+                            className="absolute w-[450px] h-[450px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,rgba(6,182,212,0.4)_50%,transparent_70%)] blur-[50px]"
+                        />
+                        {/* Outer Aura */}
+                        <motion.div
+                            initial={{ scale: 0.2, opacity: 0 }}
+                            animate={isLoading ? { scale: 0.2, opacity: 0 } : { scale: [0.2, 2.5, 1.5], opacity: [0, 0.85, 0] }}
+                            transition={{ duration: 2.0, ease: "easeOut", delay: 0.05, times: [0, 0.4, 1] }}
+                            className="absolute w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.3)_0%,rgba(59,130,246,0.15)_50%,transparent_70%)] blur-[90px]"
+                        />
+                        {/* Energized Rays/Starburst Cross */}
+                        <motion.div
+                            initial={{ scaleX: 0.1, opacity: 0 }}
+                            animate={isLoading ? { scaleX: 0.1, opacity: 0 } : { scaleX: [0.1, 3.0, 1.5], opacity: [0, 0.7, 0] }}
+                            transition={{ duration: 1.8, ease: "easeOut", delay: 0.1 }}
+                            style={{ rotate: "45deg" }}
+                            className="absolute w-[200px] h-[800px] bg-gradient-to-t from-transparent via-cyan-300/30 to-transparent blur-[40px] rounded-full"
+                        />
+                        <motion.div
+                            initial={{ scaleY: 0.1, opacity: 0 }}
+                            animate={isLoading ? { scaleY: 0.1, opacity: 0 } : { scaleY: [0.1, 3.0, 1.5], opacity: [0, 0.7, 0] }}
+                            transition={{ duration: 1.8, ease: "easeOut", delay: 0.1 }}
+                            style={{ rotate: "45deg" }}
+                            className="absolute w-[800px] h-[200px] bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent blur-[40px] rounded-full"
+                        />
+                    </div>
+
+                    <div className="w-full max-w-[1440px] mx-auto relative z-10">
                         {/* Interactive Hero Showcase Block: HRIS Shell */}
                         <motion.div
-                            className="mt-16 w-full bg-[#0b0f19] rounded-2xl border border-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.8)] overflow-hidden relative z-10 flex flex-col md:flex-row h-[620px]"
-                            {...globalRevealProps}
+                            initial={{ scale: 0.4, opacity: 0 }}
+                            animate={isLoading ? { scale: 0.4, opacity: 0 } : { scale: 1, opacity: 1 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 45,
+                                damping: 15,
+                                mass: 1.2,
+                                delay: 0.15
+                            }}
+                            className="w-full bg-[#0b0f19] rounded-2xl border border-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.8)] overflow-hidden relative z-10 flex flex-col md:flex-row h-[620px]"
                         >
                             {/* Two-Tier Left Sidebar */}
-                            <div className="flex flex-row flex-shrink-0 select-none h-full border-r border-white/10 w-full md:w-64">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={isLoading ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+                                transition={{ delay: 0, duration: 0.5, ease: "easeOut" }}
+                                className="flex flex-row flex-shrink-0 select-none h-full border-r border-white/10 w-full md:w-64"
+                            >
                                 {/* Tier 1 (Far Left): Narrow Icon Column */}
                                 <div className="w-16 bg-[#0a0d16] border-r border-white/5 flex flex-col items-center py-4 justify-between h-full">
                                     <div className="flex flex-col gap-6 items-center w-full">
@@ -1020,12 +1062,17 @@ const EcommerceBuild = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Right Column: Main Stage Area */}
                             <div className="flex-grow flex flex-col bg-[#0b0f19] h-full overflow-hidden">
                                 {/* Header Row */}
-                                <div className="h-14 border-b border-white/10 px-6 flex items-center justify-between select-none bg-[#0e1322]/80">
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={isLoading ? { opacity: 0, y: -10 } : { opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
+                                    className="h-14 border-b border-white/10 px-6 flex items-center justify-between select-none bg-[#0e1322]/80"
+                                >
                                     {/* Breadcrumbs */}
                                     <div className="flex items-center gap-2 text-xs font-mono">
                                         <span className="text-slate-400 hover:text-slate-200 cursor-pointer">
@@ -1056,7 +1103,7 @@ const EcommerceBuild = () => {
                                             AD
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
 
                                 {/* Content Stage with Dynamic Views */}
                                 <div className="flex-grow p-6 overflow-y-auto min-h-0 bg-[#0b0f19]">
@@ -1096,60 +1143,86 @@ const EcommerceBuild = () => {
                     </div>
                 </section>
 
+                {/* Scroll-Reveal Section */}
+                <section
+                    className="min-h-[80vh] flex flex-col justify-center bg-[#0b0f19] relative overflow-hidden py-20 border-b border-white/10"
+                >
+                    <div className="max-w-[1440px] w-full mx-auto px-8 md:px-16 flex flex-col items-start space-y-4">
+                        <motion.span
+                            style={{ opacity: opacity1, y: y1 }}
+                            className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
+                        >
+                            HR
+                        </motion.span>
+                        <motion.span
+                            style={{ opacity: opacity2, y: y2 }}
+                            className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans text-left inline-block tracking-tighter"
+                        >
+                            INFORMATION
+                        </motion.span>
+                        <motion.span
+                            style={{ opacity: opacity3, y: y3 }}
+                            className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
+                        >
+                            SYSTEM
+                        </motion.span>
+                    </div>
+                </section>
+
                 {/* Technical Split Panel: Deep Midnight Blue Background */}
                 <section className="bg-[#0b0f19] border-b border-white/10 bg-[radial-gradient(rgba(59,130,246,0.03)_1px,transparent_1px)] [background-size:32px_32px]">
                     <motion.div
-                        className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[700px]"
+                        className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[600px]"
                         {...globalRevealProps}
                     >
                         {/* Left Column: Narratives */}
-                        <div className="md:col-span-8 p-8 md:p-16 border-r border-white/10 space-y-24">
-                            <div className="space-y-6">
-                                <span className="text-[11px] font-mono text-blue-200/60 font-bold uppercase tracking-[0.4em] block">[ 01 ] THE COMPLEX CHALLENGE</span>
-                                <h2 className="font-['Cormorant_Garamond',serif] text-4xl md:text-5xl italic text-white">System Requirements: Database Consistency</h2>
-                                <p className="text-lg text-blue-100/70 leading-relaxed max-w-2xl font-light">
+                        <div className="md:col-span-8 p-8 md:p-12 border-r border-white/10 space-y-12 md:space-y-16">
+                            <div className="space-y-4">
+                                <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 01 ] THE COMPLEX CHALLENGE</span>
+                                <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">System Requirements: Database Consistency</h2>
+                                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
                                     Enterprise employer portal architectures frequently experience race conditions, split-brain payroll processing locks, and latency spikes during high-volume end-of-month reconciliation events. We set out to achieve atomic database transitions and real-time personnel updates under heavy concurrent HR loads.
                                 </p>
                             </div>
 
-                            <div className="space-y-6">
-                                <span className="text-[11px] font-mono text-blue-200/60 font-bold uppercase tracking-[0.4em] block">[ 02 ] THE CUSTOM SOLUTION</span>
-                                <h2 className="font-['Cormorant_Garamond',serif] text-4xl md:text-5xl italic text-white">Distributed Personnel Grid</h2>
-                                <p className="text-lg text-blue-100/70 leading-relaxed max-w-2xl font-light">
+                            <div className="space-y-4">
+                                <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 02 ] THE CUSTOM SOLUTION</span>
+                                <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">Distributed Personnel Grid</h2>
+                                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
                                     We engineered a modular personnel coordination application stack. By placing read-heavy profile metadata on a fast Redis caching engine and using isolated PostgreSQL read-replicas, employee dashboards compile in sub-100ms times while salary ledgers remain strictly transactional.
                                 </p>
                             </div>
 
-                            <div className="space-y-6">
-                                <span className="text-[11px] font-mono text-blue-200/60 font-bold uppercase tracking-[0.4em] block">[ 03 ] ENGINEERING RESULTS</span>
-                                <h2 className="font-['Cormorant_Garamond',serif] text-4xl md:text-5xl italic text-white">Zero Ledger Failures</h2>
-                                <p className="text-lg text-blue-100/70 leading-relaxed max-w-2xl font-light">
+                            <div className="space-y-4">
+                                <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 03 ] ENGINEERING RESULTS</span>
+                                <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">Zero Ledger Failures</h2>
+                                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
                                     The revamped distributed pipeline completely eliminated reconciliation collision errors. Database transaction queue latencies dropped by 45%, IT help-desk routing speeds increased by 30%, and personnel lifecycle synchronizations completed globally in under 1.5 seconds.
                                 </p>
                             </div>
                         </div>
 
                         {/* Right Column: Metadata */}
-                        <div className="md:col-span-4 bg-black/20 p-8 md:p-16 space-y-16">
-                            <div className="border-b border-white/10 pb-10">
-                                <span className="text-[11px] font-mono text-blue-200/60 uppercase block mb-4 tracking-[0.2em]">CLIENT</span>
-                                <span className="font-['Cormorant_Garamond',serif] text-3xl text-white italic">Global Workforce Corp</span>
+                        <div className="md:col-span-4 bg-white/[0.01] backdrop-blur-md p-8 md:p-12 space-y-10 flex flex-col justify-between">
+                            <div className="border-b border-white/5 pb-6">
+                                <span className="text-[10px] font-mono text-blue-400 uppercase block mb-2 tracking-[0.2em] font-bold">CLIENT</span>
+                                <span className="font-sans text-xl md:text-2xl font-bold text-white tracking-tight">Global Workforce Corp</span>
                             </div>
 
-                            <div className="border-b border-white/10 pb-10">
-                                <span className="text-[11px] font-mono text-blue-200/60 uppercase block mb-4 tracking-[0.2em]">ROLE</span>
-                                <div className="space-y-2">
-                                    <span className="font-['Cormorant_Garamond',serif] text-2xl text-white block italic">Enterprise Architecture</span>
-                                    <span className="font-['Cormorant_Garamond',serif] text-2xl text-white block italic">Full-Stack Engineering</span>
-                                    <span className="font-['Cormorant_Garamond',serif] text-2xl text-white block italic">Database Design</span>
+                            <div className="border-b border-white/5 pb-6">
+                                <span className="text-[10px] font-mono text-blue-400 uppercase block mb-2 tracking-[0.2em] font-bold">ROLE</span>
+                                <div className="space-y-1.5">
+                                    <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Enterprise Architecture</span>
+                                    <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Full-Stack Engineering</span>
+                                    <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Database Design</span>
                                 </div>
                             </div>
 
                             <div>
-                                <span className="text-[11px] font-mono text-blue-200/60 uppercase block mb-6 tracking-[0.2em]">TECH STACK</span>
-                                <div className="flex flex-wrap gap-3">
+                                <span className="text-[10px] font-mono text-blue-400 uppercase block mb-4 tracking-[0.2em] font-bold">TECH STACK</span>
+                                <div className="flex flex-wrap gap-2">
                                     {['NODE.JS', 'POSTGRESQL', 'GRAPHQL', 'REDIS', 'DOCKER', 'KUBERNETES', 'TAILWIND CSS'].map((tech) => (
-                                        <span key={tech} className="px-4 py-1.5 border border-white/20 text-blue-100/80 font-mono text-[10px] uppercase tracking-widest">
+                                        <span key={tech} className="px-3 py-1 bg-white/[0.03] border border-white/10 rounded-full text-slate-350 font-mono text-[9px] uppercase tracking-wider">
                                             {tech}
                                         </span>
                                     ))}
@@ -1160,80 +1233,91 @@ const EcommerceBuild = () => {
                 </section>
 
                 {/* Multi-Feature Gallery: Dark Charcoal Background */}
-                <section className="px-8 md:px-16 py-32 bg-[#131313]">
+                <section className="px-8 md:px-16 py-16 md:py-24 bg-[#0b0f19]">
                     <motion.div
                         className="max-w-[1440px] mx-auto"
                         {...globalRevealProps}
                     >
-                        <div className="flex items-center gap-8 mb-24">
-                            <h3 className="font-['Cormorant_Garamond',serif] text-5xl md:text-7xl italic text-white whitespace-nowrap">Workforce Operations</h3>
+                        <div className="flex items-center gap-8 mb-16">
+                            <h3 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-white whitespace-nowrap">Workforce Operations</h3>
                             <div className="h-px bg-white/10 w-full"></div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                             {/* Feature 1 */}
-                            <div className="group">
-                                <div className="mb-10 overflow-hidden border border-white/10 relative">
-                                    <img alt="Payroll Ledger" className="w-full aspect-[4/3] object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR_jXsHyQNEUqZ9B_u50oU5oviZqEYA7jv2exVBux546eDADEoFTwtyuHqHf2UIZQkB4g2C3up7x-g8YnB80QsKye8vKfDKyYjIDj7MM4x5VuApcRF4Y854iGZVfBPvwXSrc4_UV7wLrUsSxTOsgXohpc4r4elCSZDRKvyFYkeVKJpufzvZMoi8KtLZmLGIqtMKN1mIRUgomXQ7aeSeNwQFrxxLM4_h4J4u6O077TXebeeG7WzP2O3WY0Wn48ITm4OKyMjFkRWYrAW" />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <motion.div 
+                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-blue-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                {...globalRevealProps}
+                            >
+                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                    <img alt="Payroll Ledger" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR_jXsHyQNEUqZ9B_u50oU5oviZqEYA7jv2exVBux546eDADEoFTwtyuHqHf2UIZQkB4g2C3up7x-g8YnB80QsKye8vKfDKyYjIDj7MM4x5VuApcRF4Y854iGZVfBPvwXSrc4_UV7wLrUsSxTOsgXohpc4r4elCSZDRKvyFYkeVKJpufzvZMoi8KtLZmLGIqtMKN1mIRUgomXQ7aeSeNwQFrxxLM4_h4J4u6O077TXebeeG7WzP2O3WY0Wn48ITm4OKyMjFkRWYrAW" />
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
-                                <div className="flex justify-between items-start border-l border-white/20 pl-6">
+                                <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
                                     <div>
-                                        <span className="text-[11px] font-mono text-white/40 uppercase tracking-[0.3em] block mb-2">01 / FINANCE</span>
-                                        <h4 className="font-['Cormorant_Garamond',serif] text-3xl italic text-white">Payroll Ledger</h4>
+                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">01 / FINANCE</span>
+                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">Payroll Ledger</h4>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Feature 2 */}
-                            <div className="group">
-                                <div className="mb-10 overflow-hidden border border-white/10 relative">
-                                    <img alt="Workforce Mapping" className="w-full aspect-[4/3] object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6g4AP617N_r3pjPw2sE21ArNZNFdm1i6qTA9w_CxYSLHwCU9A0fmLs1-svz9ZoIc0k9iAO3HrG4C7aT4VNrr0Rkz_HRfVUfO4jIXxOPdeg15AAzKj6qiGyy7xGKrlenRkosp4I0mK67Ck9fpm2oCLJW_GHPjdpgWXaLvwwCwMOQBslDnshLf5o1EVMQga2NpTEEwVAc0Fms3-6ANKhdXroLNpo5QDxLY-GGtnc-muzYhnDEB7-D-0owNmr6X9BETkyPE9EAvS3h9J" />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <motion.div 
+                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-cyan-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                {...globalRevealProps}
+                            >
+                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                    <img alt="Workforce Mapping" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6g4AP617N_r3pjPw2sE21ArNZNFdm1i6qTA9w_CxYSLHwCU9A0fmLs1-svz9ZoIc0k9iAO3HrG4C7aT4VNrr0Rkz_HRfVUfO4jIXxOPdeg15AAzKj6qiGyy7xGKrlenRkosp4I0mK67Ck9fpm2oCLJW_GHPjdpgWXaLvwwCwMOQBslDnshLf5o1EVMQga2NpTEEwVAc0Fms3-6ANKhdXroLNpo5QDxLY-GGtnc-muzYhnDEB7-D-0owNmr6X9BETkyPE9EAvS3h9J" />
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
-                                <div className="flex justify-between items-start border-l border-white/20 pl-6">
+                                <div className="flex justify-between items-start border-l border-cyan-500/40 pl-5 mb-1">
                                     <div>
-                                        <span className="text-[11px] font-mono text-white/40 uppercase tracking-[0.3em] block mb-2">02 / WORKFORCE</span>
-                                        <h4 className="font-['Cormorant_Garamond',serif] text-3xl italic text-white">Workforce Mapping</h4>
+                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">02 / WORKFORCE</span>
+                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">Workforce Mapping</h4>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Feature 3 */}
-                            <div className="group">
-                                <div className="mb-10 overflow-hidden border border-white/10 relative">
-                                    <img alt="Ticketing Flow" className="w-full aspect-[4/3] object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Vlse04m9Cr_HHxbFMqSaKPkTVx3dpytRQLODuUJmtems15DVb4RVnZRYEyZ98kHDJX2qVd4qGEsougfeiDZA5jyx9nAR4NhWZqGhKg_JJQ9bQEEdrrkTuuzojrpBe-cP0vwN71NonSJPrTcFPiPQtxYSkYBrj8QoUxdImGUBhFR0DO4XN4alkgu6ZQtwPGXm4qZGLDwMCDK1O4siz95yUWXJTCjpFHujzpfuXFMTFCqUSM5cOwjU34sBOjtM1yfr6f09AZxbZxoE" />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <motion.div 
+                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-blue-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                {...globalRevealProps}
+                            >
+                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                    <img alt="Ticketing Flow" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Vlse04m9Cr_HHxbFMqSaKPkTVx3dpytRQLODuUJmtems15DVb4RVnZRYEyZ98kHDJX2qVd4qGEsougfeiDZA5jyx9nAR4NhWZqGhKg_JJQ9bQEEdrrkTuuzojrpBe-cP0vwN71NonSJPrTcFPiPQtxYSkYBrj8QoUxdImGUBhFR0DO4XN4alkgu6ZQtwPGXm4qZGLDwMCDK1O4siz95yUWXJTCjpFHujzpfuXFMTFCqUSM5cOwjU34sBOjtM1yfr6f09AZxbZxoE" />
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
-                                <div className="flex justify-between items-start border-l border-white/20 pl-6">
+                                <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
                                     <div>
-                                        <span className="text-[11px] font-mono text-white/40 uppercase tracking-[0.3em] block mb-2">03 / OPERATIONS</span>
-                                        <h4 className="font-['Cormorant_Garamond',serif] text-3xl italic text-white">Ticketing Flow</h4>
+                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">03 / OPERATIONS</span>
+                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-350 transition-colors leading-snug">Ticketing Flow</h4>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Feature 4 */}
-                            <div className="group">
-                                <div className="mb-10 overflow-hidden border border-white/10 relative">
-                                    <img alt="CV Indexing Engine" className="w-full aspect-[4/3] object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFMV2Ot1qu1wEYHc0gGAQajdlDX_SSE6ySfTVdWPswhEwz7dx2ajEFtz9q6Xa2nOC_mYpMN9Teaisp4rMcu64iNrcw9CA8hX0ceFLPtkjstNB6e-PcVf2o0WJ3niDpdzc1EhSfv2uVYOKJwVfKvobdjr9yKlF9dAUAuFSVrHlXeEcGRkfNViVLGNku0Jhqm0Vf145sIyFsO_eFfnCVDcjJlg_UWfULv0VQ9f79AGaqyOcZQXdC584gB1Hk5eqyGUdKwmBPw2dS2fx" />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                            <motion.div 
+                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-emerald-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                {...globalRevealProps}
+                            >
+                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                    <img alt="CV Indexing Engine" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFMV2Ot1qu1wEYHc0gGAQajdlDX_SSE6ySfTVdWPswhEwz7dx2ajEFtz9q6Xa2nOC_mYpMN9Teaisp4rMcu64iNrcw9CA8hX0ceFLPtkjstNB6e-PcVf2o0WJ3niDpdzc1EhSfv2uVYOKJwVfKvobdjr9yKlF9dAUAuFSVrHlXeEcGRkfNViVLGNku0Jhqm0Vf145sIyFsO_eFfnCVDcjJlg_UWfULv0VQ9f79AGaqyOcZQXdC584gB1Hk5eqyGUdKwmBPw2dS2fx" />
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
-                                <div className="flex justify-between items-start border-l border-white/20 pl-6">
+                                <div className="flex justify-between items-start border-l border-emerald-500/40 pl-5 mb-1">
                                     <div>
-                                        <span className="text-[11px] font-mono text-white/40 uppercase tracking-[0.3em] block mb-2">04 / TALENT</span>
-                                        <h4 className="font-['Cormorant_Garamond',serif] text-3xl italic text-white">CV Indexing Engine</h4>
+                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">04 / TALENT</span>
+                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-emerald-350 transition-colors leading-snug">CV Indexing Engine</h4>
                                     </div>
                                 </div>
-                            </div>
-
+                            </motion.div>
                         </div>
                     </motion.div>
                 </section>
             </main>
 
-            <RelatedProjects currentProject="ecommerce" />
-            <Footer />
+            <RelatedProjects currentProject="ecommerce" isDarkTheme={true} />
+            <Footer isDarkTheme={true} />
         </div>
     );
 };
