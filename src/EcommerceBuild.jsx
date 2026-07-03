@@ -1143,34 +1143,94 @@ const EcommerceBuild = () => {
                     </div>
                 </section>
 
-                {/* Scroll-Reveal Section */}
-                <section
-                    className="min-h-[80vh] flex flex-col justify-center bg-[#0b0f19] relative overflow-hidden py-20 border-b border-white/10"
-                >
-                    <div className="max-w-[1440px] w-full mx-auto px-8 md:px-16 flex flex-col items-start space-y-4">
-                        <motion.span
-                            style={{ opacity: opacity1, y: y1 }}
-                            className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
-                        >
-                            HR
-                        </motion.span>
-                        <motion.span
-                            style={{ opacity: opacity2, y: y2 }}
-                            className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans text-left inline-block tracking-tighter"
-                        >
-                            INFORMATION
-                        </motion.span>
-                        <motion.span
-                            style={{ opacity: opacity3, y: y3 }}
-                            className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
-                        >
-                            SYSTEM
-                        </motion.span>
-                    </div>
-                </section>
+                {/* Ambient Background Area below Command Center */}
+                <div className="relative overflow-hidden w-full bg-[#0b0f19]">
+                    
+                    {/* Slow-drifting premium ambient glows */}
+                    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
+                        {/* Soft blue ambient glow top-left */}
+                        <motion.div
+                            animate={{
+                                x: [0, 60, -40, 0],
+                                y: [0, 80, -50, 0],
+                                scale: [1, 1.15, 0.9, 1],
+                            }}
+                            transition={{
+                                duration: 30,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute top-[10%] left-[-20%] w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.20)_0%,transparent_70%)] blur-[100px]"
+                        />
 
-                {/* Technical Split Panel: Deep Midnight Blue Background */}
-                <section className="bg-[#0b0f19] border-b border-white/10 bg-[radial-gradient(rgba(59,130,246,0.03)_1px,transparent_1px)] [background-size:32px_32px]">
+                        {/* Soft indigo ambient glow mid-right */}
+                        <motion.div
+                            animate={{
+                                x: [0, -80, 40, 0],
+                                y: [0, 100, -70, 0],
+                                scale: [1, 0.95, 1.1, 1],
+                            }}
+                            transition={{
+                                duration: 35,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute top-[40%] right-[-20%] w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.20)_0%,transparent_70%)] blur-[110px]"
+                        />
+
+                        {/* Soft cyan ambient glow bottom-left */}
+                        <motion.div
+                            animate={{
+                                x: [0, 50, -60, 0],
+                                y: [0, -70, 60, 0],
+                                scale: [1, 1.1, 0.9, 1],
+                            }}
+                            transition={{
+                                duration: 28,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="absolute bottom-[5%] left-[10%] w-[850px] h-[850px] rounded-full bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.20)_0%,transparent_70%)] blur-[100px]"
+                        />
+
+                        {/* Faint premium background grid panning effect */}
+                        <div 
+                            className="absolute inset-0 opacity-[0.20] mix-blend-overlay bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:48px_48px]"
+                            style={{
+                                maskImage: 'radial-gradient(ellipse_at_center, black, transparent 80%)',
+                                WebkitMaskImage: 'radial-gradient(ellipse_at_center, black, transparent 80%)'
+                            }}
+                        />
+                    </div>
+
+                    {/* Scroll-Reveal Section */}
+                    <section
+                        className="min-h-[80vh] flex flex-col justify-center relative z-10 overflow-hidden py-20 border-b border-white/10"
+                    >
+                        <div className="max-w-[1440px] w-full mx-auto px-8 md:px-16 flex flex-col items-start space-y-4">
+                            <motion.span
+                                style={{ opacity: opacity1, y: y1 }}
+                                className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
+                            >
+                                HR
+                            </motion.span>
+                            <motion.span
+                                style={{ opacity: opacity2, y: y2 }}
+                                className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans text-left inline-block tracking-tighter"
+                            >
+                                INFORMATION
+                            </motion.span>
+                            <motion.span
+                                style={{ opacity: opacity3, y: y3 }}
+                                className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
+                            >
+                                SYSTEM
+                            </motion.span>
+                        </div>
+                    </section>
+
+                    {/* Technical Split Panel: Deep Midnight Blue Background */}
+                    <section className="relative z-10 border-b border-white/10 bg-[radial-gradient(rgba(59,130,246,0.03)_1px,transparent_1px)] [background-size:32px_32px]">
                     <motion.div
                         className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[600px]"
                         {...globalRevealProps}
@@ -1233,7 +1293,7 @@ const EcommerceBuild = () => {
                 </section>
 
                 {/* Multi-Feature Gallery: Dark Charcoal Background */}
-                <section className="px-8 md:px-16 py-16 md:py-24 bg-[#0b0f19]">
+                <section className="relative z-10 px-8 md:px-16 py-16 md:py-24 bg-transparent">
                     <motion.div
                         className="max-w-[1440px] mx-auto"
                         {...globalRevealProps}
@@ -1314,7 +1374,8 @@ const EcommerceBuild = () => {
                         </div>
                     </motion.div>
                 </section>
-            </main>
+            </div>
+        </main>
 
             <RelatedProjects currentProject="ecommerce" isDarkTheme={true} />
             <Footer isDarkTheme={true} />
