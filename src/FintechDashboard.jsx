@@ -27,7 +27,6 @@ const FintechDashboard = () => {
     const [billingSearch, setBillingSearch] = useState('');
     const [discountType, setDiscountType] = useState('none');
     const [paymentMethod, setPaymentMethod] = useState('cash'); // 'cash', 'card'
-    const [checkoutSuccess, setCheckoutSuccess] = useState(false);
     const [previousBill, setPreviousBill] = useState(null);
 
     useEffect(() => {
@@ -103,7 +102,6 @@ const FintechDashboard = () => {
             timestamp: new Date().toLocaleTimeString()
         });
 
-        setCheckoutSuccess(true);
         setCart([]);
         setDiscountType('none');
     };
@@ -274,7 +272,6 @@ const FintechDashboard = () => {
                                                     key={item.id}
                                                     onClick={() => {
                                                         setActiveTab(item.id);
-                                                        setCheckoutSuccess(false);
                                                     }}
                                                     className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-between ${isActive
                                                         ? 'bg-orange-600 text-white shadow-sm shadow-orange-600/20 font-black'
@@ -356,7 +353,6 @@ const FintechDashboard = () => {
                                                         value={billingSearch}
                                                         onChange={(e) => {
                                                             setBillingSearch(e.target.value);
-                                                            setCheckoutSuccess(false);
                                                         }}
                                                         className="bg-transparent border-none outline-none text-xs w-full text-slate-700 placeholder-slate-400 font-medium"
                                                     />
@@ -394,7 +390,6 @@ const FintechDashboard = () => {
                                                                     <button
                                                                         onClick={() => {
                                                                             addToCart(p);
-                                                                            setCheckoutSuccess(false);
                                                                         }}
                                                                         disabled={p.stock <= 0}
                                                                         className="px-2.5 py-1 bg-orange-600 text-white rounded-md text-[10px] font-bold hover:bg-orange-700 transition-colors disabled:bg-slate-200 disabled:text-slate-400"
