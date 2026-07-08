@@ -140,7 +140,7 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
       animate={{ y: isVisible ? 0 : -80 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
       className={`fixed top-0 left-0 w-full z-50 h-20 transition-colors duration-300 ${isLightFintech
-          ? 'bg-[#FFF7ED]/90 border-b border-orange-200/40 backdrop-blur-md'
+          ? 'bg-white/80 border-b border-orange-200/50 backdrop-blur-md'
           : isDarkTheme
             ? 'bg-[#0b0f19]/90 border-b border-white/10 backdrop-blur-md'
             : 'bg-white border-b border-gray-300'

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import RelatedProjects from './components/RelatedProjects';
 
 const globalRevealProps = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: false, amount: 0.3 },
+    viewport: { once: true, amount: 0.3 },
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
 };
 
@@ -134,7 +134,7 @@ const FintechDashboard = () => {
                     }}
                     className="absolute top-[-10%] left-[-15%] w-[1000px] h-[1000px] rounded-full bg-[radial-gradient(circle_at_center,rgba(224,120,90,0.75)_0%,transparent_70%)] blur-[120px]"
                 />
-                
+
                 {/* Soft amber spot */}
                 <motion.div
                     animate={{
@@ -149,7 +149,7 @@ const FintechDashboard = () => {
                     }}
                     className="absolute top-[35%] right-[-15%] w-[1200px] h-[1200px] rounded-full bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.75)_0%,transparent_70%)] blur-[140px]"
                 />
-                
+
                 {/* Soft vibrant orange spot */}
                 <motion.div
                     animate={{
@@ -165,6 +165,15 @@ const FintechDashboard = () => {
                     className="absolute bottom-[10%] left-[15%] w-[1100px] h-[1100px] rounded-full bg-[radial-gradient(circle_at_center,rgba(234,88,12,0.70)_0%,transparent_70%)] blur-[130px]"
                 />
             </div>
+
+            {/* Subtle light-themed background grid pattern */}
+            <div 
+                className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#ea580c10_1px,transparent_1px),linear-gradient(to_bottom,#ea580c10_1px,transparent_1px)] bg-[size:4rem_4rem]"
+                style={{
+                    maskImage: 'radial-gradient(ellipse_at_center, black, transparent 90%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse_at_center, black, transparent 90%)'
+                }}
+            />
 
             {/* Custom light warm loading screen */}
             <AnimatePresence>
@@ -223,15 +232,16 @@ const FintechDashboard = () => {
                     <div className="w-full max-w-[1400px] mx-auto relative z-10">
                         {/* Interactive Hero Showcase Block: 3-Column Dashboard Layout */}
                         <motion.div
-                            initial={{ scale: 0.4, opacity: 0 }}
-                            animate={isLoading ? { scale: 0.4, opacity: 0 } : { scale: 1, opacity: 1 }}
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={isLoading ? { scale: 0.95, opacity: 0 } : { scale: 1, opacity: 1 }}
                             transition={{
                                 type: "spring",
-                                stiffness: 45,
-                                damping: 15,
-                                mass: 1.2,
-                                delay: 0.15
+                                stiffness: 90,
+                                damping: 20,
+                                mass: 0.8,
+                                delay: 0.1
                             }}
+                            style={{ willChange: "transform, opacity" }}
                             className="w-full bg-white/90 backdrop-blur-md rounded-2xl border border-orange-600/60 shadow-[0_25px_70px_-15px_rgba(234,88,12,0.08)] overflow-hidden relative z-10 flex flex-col md:flex-row h-[720px]"
                         >
                             {/* COLUMN 1: LEFT SIDEBAR (Fixed width, ~250px) */}
@@ -267,8 +277,8 @@ const FintechDashboard = () => {
                                                         setCheckoutSuccess(false);
                                                     }}
                                                     className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-between ${isActive
-                                                            ? 'bg-orange-600 text-white shadow-sm shadow-orange-600/20 font-black'
-                                                            : 'text-[#5c4033] hover:bg-orange-50/50'
+                                                        ? 'bg-orange-600 text-white shadow-sm shadow-orange-600/20 font-black'
+                                                        : 'text-[#5c4033] hover:bg-orange-50/50'
                                                         }`}
                                                 >
                                                     <div className="flex items-center gap-3">
@@ -290,7 +300,7 @@ const FintechDashboard = () => {
                                 {/* Bottom Sign Out */}
                                 <div className="pt-4 border-t border-orange-200/40">
                                     <button
-                                        onClick={() => {}}
+                                        onClick={() => { }}
                                         className="w-full text-left px-3.5 py-2 rounded-xl text-xs font-bold text-red-600 hover:bg-red-50 transition-colors flex items-center gap-3"
                                     >
                                         <span className="material-symbols-outlined text-[18px] text-red-600">logout</span>
@@ -327,103 +337,103 @@ const FintechDashboard = () => {
                                 {activeTab === 'billing' && (
                                     <div className="flex-grow p-6 flex flex-col justify-between overflow-y-auto min-h-0">
                                         <div className="space-y-5 min-h-0 flex flex-col">
-                                        {/* Title Bar */}
-                                        <div className="flex items-center justify-between">
-                                            <h2 className="text-xl font-black text-slate-900 tracking-tight capitalize">{activeTab}</h2>
-                                            <button className="flex items-center gap-1.5 bg-emerald-550 bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
-                                                <span className="material-symbols-outlined text-[14px]">lock_open</span>
-                                                <span>Open Counter</span>
-                                            </button>
-                                        </div>
-
-                                        {/* Search & Active All filter */}
-                                        <div className="space-y-3">
-                                            <div className="flex items-center gap-3 bg-[#FFFDF9] border border-orange-200/50 px-4 py-2.5 rounded-xl">
-                                                <span className="material-symbols-outlined text-slate-400 text-lg">search</span>
-                                                <input
-                                                    type="text"
-                                                    placeholder="Search products..."
-                                                    value={billingSearch}
-                                                    onChange={(e) => {
-                                                        setBillingSearch(e.target.value);
-                                                        setCheckoutSuccess(false);
-                                                    }}
-                                                    className="bg-transparent border-none outline-none text-xs w-full text-slate-700 placeholder-slate-400 font-medium"
-                                                />
+                                            {/* Title Bar */}
+                                            <div className="flex items-center justify-between">
+                                                <h2 className="text-xl font-black text-slate-900 tracking-tight capitalize">{activeTab}</h2>
+                                                <button className="flex items-center gap-1.5 bg-emerald-550 bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
+                                                    <span className="material-symbols-outlined text-[14px]">lock_open</span>
+                                                    <span>Open Counter</span>
+                                                </button>
                                             </div>
-                                            <div className="flex">
-                                                <button className="px-4 py-1.5 bg-orange-600 text-white font-extrabold rounded-lg text-[10px] uppercase tracking-wider shadow-sm shadow-orange-600/10">All</button>
-                                            </div>
-                                        </div>
 
-                                        {/* Data Table */}
-                                        <div className="flex-grow overflow-y-auto border border-orange-200/50 rounded-xl min-h-[160px] bg-slate-50/20">
-                                            <table className="w-full text-left border-collapse text-xs">
-                                                <thead>
-                                                    <tr className="bg-orange-50/30 text-orange-950 font-bold border-b border-orange-200/30">
-                                                        <th className="p-3">Item ID</th>
-                                                        <th className="p-3">Item Name</th>
-                                                        <th className="p-3">Stock Qty</th>
-                                                        <th className="p-3">Price</th>
-                                                        <th className="p-3 text-right">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody className="divide-y divide-orange-200/30 font-medium text-slate-600">
-                                                    {filteredProducts.map(p => (
-                                                        <tr key={p.id} className="hover:bg-orange-50/10 transition-colors bg-white">
-                                                            <td className="p-3 font-mono font-bold text-slate-500">{p.id}</td>
-                                                            <td className="p-3 text-slate-800 font-semibold">{p.name}</td>
-                                                            <td className="p-3">
-                                                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${p.stock <= 0 ? 'bg-red-50 text-red-500' : p.stock < 20 ? 'bg-amber-50 text-amber-500' : 'bg-emerald-50 text-emerald-500'
-                                                                    }`}>
-                                                                    {p.stock} units
-                                                                </span>
-                                                            </td>
-                                                            <td className="p-3 text-slate-800">Rs. {p.price.toFixed(2)}</td>
-                                                            <td className="p-3 text-right">
-                                                                <button
-                                                                    onClick={() => {
-                                                                        addToCart(p);
-                                                                        setCheckoutSuccess(false);
-                                                                    }}
-                                                                    disabled={p.stock <= 0}
-                                                                    className="px-2.5 py-1 bg-orange-600 text-white rounded-md text-[10px] font-bold hover:bg-orange-700 transition-colors disabled:bg-slate-200 disabled:text-slate-400"
-                                                                >
-                                                                    Add +
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-
-                                            {/* Large Empty State (Show when filtered items empty) */}
-                                            {filteredProducts.length === 0 && (
-                                                <div className="flex flex-col items-center justify-center py-12 text-center">
-                                                    <span className="material-symbols-outlined text-slate-300 text-4xl mb-2">inventory_2</span>
-                                                    <span className="text-slate-400 text-xs font-bold">No products found</span>
+                                            {/* Search & Active All filter */}
+                                            <div className="space-y-3">
+                                                <div className="flex items-center gap-3 bg-[#FFFDF9] border border-orange-200/50 px-4 py-2.5 rounded-xl">
+                                                    <span className="material-symbols-outlined text-slate-400 text-lg">search</span>
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Search products..."
+                                                        value={billingSearch}
+                                                        onChange={(e) => {
+                                                            setBillingSearch(e.target.value);
+                                                            setCheckoutSuccess(false);
+                                                        }}
+                                                        className="bg-transparent border-none outline-none text-xs w-full text-slate-700 placeholder-slate-400 font-medium"
+                                                    />
                                                 </div>
+                                                <div className="flex">
+                                                    <button className="px-4 py-1.5 bg-orange-600 text-white font-extrabold rounded-lg text-[10px] uppercase tracking-wider shadow-sm shadow-orange-600/10">All</button>
+                                                </div>
+                                            </div>
+
+                                            {/* Data Table */}
+                                            <div className="flex-grow overflow-y-auto border border-orange-200/50 rounded-xl min-h-[160px] bg-slate-50/20">
+                                                <table className="w-full text-left border-collapse text-xs">
+                                                    <thead>
+                                                        <tr className="bg-orange-50/30 text-orange-950 font-bold border-b border-orange-200/30">
+                                                            <th className="p-3">Item ID</th>
+                                                            <th className="p-3">Item Name</th>
+                                                            <th className="p-3">Stock Qty</th>
+                                                            <th className="p-3">Price</th>
+                                                            <th className="p-3 text-right">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody className="divide-y divide-orange-200/30 font-medium text-slate-600">
+                                                        {filteredProducts.map(p => (
+                                                            <tr key={p.id} className="hover:bg-orange-50/10 transition-colors bg-white">
+                                                                <td className="p-3 font-mono font-bold text-slate-500">{p.id}</td>
+                                                                <td className="p-3 text-slate-800 font-semibold">{p.name}</td>
+                                                                <td className="p-3">
+                                                                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${p.stock <= 0 ? 'bg-red-50 text-red-500' : p.stock < 20 ? 'bg-amber-50 text-amber-500' : 'bg-emerald-50 text-emerald-500'
+                                                                        }`}>
+                                                                        {p.stock} units
+                                                                    </span>
+                                                                </td>
+                                                                <td className="p-3 text-slate-800">Rs. {p.price.toFixed(2)}</td>
+                                                                <td className="p-3 text-right">
+                                                                    <button
+                                                                        onClick={() => {
+                                                                            addToCart(p);
+                                                                            setCheckoutSuccess(false);
+                                                                        }}
+                                                                        disabled={p.stock <= 0}
+                                                                        className="px-2.5 py-1 bg-orange-600 text-white rounded-md text-[10px] font-bold hover:bg-orange-700 transition-colors disabled:bg-slate-200 disabled:text-slate-400"
+                                                                    >
+                                                                        Add +
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+
+                                                {/* Large Empty State (Show when filtered items empty) */}
+                                                {filteredProducts.length === 0 && (
+                                                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                                                        <span className="material-symbols-outlined text-slate-300 text-4xl mb-2">inventory_2</span>
+                                                        <span className="text-slate-400 text-xs font-bold">No products found</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Bottom Card: Previous Bill Summary */}
+                                        <div className="mt-4 bg-[#FFFDF9] border border-orange-200/50 rounded-xl p-4 flex flex-col justify-between">
+                                            <span className="text-[9px] font-bold text-orange-950/80 uppercase tracking-widest block mb-2">Previous Bill Summary</span>
+                                            {previousBill ? (
+                                                <div className="flex items-center justify-between text-xs font-medium text-slate-600">
+                                                    <div>
+                                                        <span className="font-bold text-slate-800">Bill ID:</span> {previousBill.billId} ({previousBill.itemsCount} items)
+                                                    </div>
+                                                    <div className="font-extrabold text-orange-600">
+                                                        Rs. {previousBill.total.toFixed(2)} ({previousBill.paymentMethod.toUpperCase()})
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <span className="text-slate-400 text-xs font-semibold italic">No previous bill yet</span>
                                             )}
                                         </div>
                                     </div>
-
-                                    {/* Bottom Card: Previous Bill Summary */}
-                                    <div className="mt-4 bg-[#FFFDF9] border border-orange-200/50 rounded-xl p-4 flex flex-col justify-between">
-                                        <span className="text-[9px] font-bold text-orange-950/80 uppercase tracking-widest block mb-2">Previous Bill Summary</span>
-                                        {previousBill ? (
-                                            <div className="flex items-center justify-between text-xs font-medium text-slate-600">
-                                                <div>
-                                                    <span className="font-bold text-slate-800">Bill ID:</span> {previousBill.billId} ({previousBill.itemsCount} items)
-                                                </div>
-                                                <div className="font-extrabold text-orange-600">
-                                                    Rs. {previousBill.total.toFixed(2)} ({previousBill.paymentMethod.toUpperCase()})
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <span className="text-slate-400 text-xs font-semibold italic">No previous bill yet</span>
-                                        )}
-                                    </div>
-                                </div>
                                 )}
 
                                 {/* Stock Tab Layout */}
@@ -446,9 +456,9 @@ const FintechDashboard = () => {
                                             <div className="flex flex-col md:flex-row md:items-center gap-3 bg-[#FFFDF9] border border-orange-200/50 p-4 rounded-xl text-xs">
                                                 <div className="flex items-center gap-2 bg-[#FFFDF9] border border-orange-200/40 px-3 py-2 rounded-xl flex-grow">
                                                     <span className="material-symbols-outlined text-slate-400 text-lg">search</span>
-                                                    <input 
-                                                        type="text" 
-                                                        placeholder="Search items by name or ID." 
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Search items by name or ID."
                                                         className="bg-transparent border-none outline-none text-xs w-full text-slate-700 placeholder-slate-400 font-medium"
                                                         disabled
                                                     />
@@ -496,9 +506,8 @@ const FintechDashboard = () => {
                                                                     <td className="p-3">Rs. {p.price.toFixed(2)}</td>
                                                                     <td className="p-3 text-slate-400">Rs. {(p.price * 0.55).toFixed(2)}</td>
                                                                     <td className="p-3">
-                                                                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                                                                            p.stock <= 0 ? 'bg-red-50 text-red-500' : p.stock < 20 ? 'bg-amber-50 text-amber-500' : 'bg-emerald-50 text-emerald-500'
-                                                                        }`}>
+                                                                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${p.stock <= 0 ? 'bg-red-50 text-red-500' : p.stock < 20 ? 'bg-amber-50 text-amber-500' : 'bg-emerald-50 text-emerald-500'
+                                                                            }`}>
                                                                             {p.stock} units
                                                                         </span>
                                                                     </td>
@@ -584,9 +593,9 @@ const FintechDashboard = () => {
                                             <div className="flex flex-col md:flex-row md:items-center gap-3 bg-[#FFFDF9] border border-orange-200/50 p-4 rounded-xl text-xs">
                                                 <div className="flex items-center gap-2 bg-[#FFFDF9] border border-orange-200/40 px-3 py-2 rounded-xl flex-grow">
                                                     <span className="material-symbols-outlined text-slate-400 text-lg">search</span>
-                                                    <input 
-                                                        type="text" 
-                                                        placeholder="Search items..." 
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Search items..."
                                                         className="bg-transparent border-none outline-none text-xs w-full text-slate-700 placeholder-slate-400 font-medium"
                                                         disabled
                                                     />
@@ -846,75 +855,79 @@ const FintechDashboard = () => {
                             {...globalRevealProps}
                         >
                             <div className="flex items-center gap-8 mb-16">
-                                <h3 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-slate-800 whitespace-nowrap">Core Terminal Modules</h3>
+                                <h3 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-slate-800 whitespace-nowrap">BakeryOS Core Modules</h3>
                                 <div className="h-px bg-orange-400/80 w-full"></div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                                {/* Feature 1 */}
+                             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                {/* Feature 1: Secure Access */}
                                 <motion.div
                                     className="group bg-white border border-orange-400/65 rounded-2xl p-5 md:p-6 hover:border-orange-500/25 transition-all duration-500 hover:bg-orange-50/10 shadow-sm flex flex-col justify-between"
                                     {...globalRevealProps}
                                 >
-                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10]">
-                                        <img alt="Order Book Module" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR_jXsHyQNEUqZ9B_u50oU5oviZqEYA7jv2exVBux546eDADEoFTwtyuHqHf2UIZQkB4g2C3up7x-g8YnB80QsKye8vKfDKyYjIDj7MM4x5VuApcRF4Y854iGZVfBPvwXSrc4_UV7wLrUsSxTOsgXohpc4r4elCSZDRKvyFYkeVKJpufzvZMoi8KtLZmLGIqtMKN1mIRUgomXQ7aeSeNwQFrxxLM4_h4J4u6O077TXebeeG7WzP2O3WY0Wn48ITm4OKyMjFkRWYrAW" />
-                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10] bg-slate-50 p-4">
+                                        <img alt="Secure Access" className="w-full h-full object-contain grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/bakery-login.png" />
+                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-orange-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">01 / ORDER BOOK</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Order Book</h4>
+                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">01 / SECURITY</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Secure Access</h4>
+                                            <p className="text-xs text-slate-500 mt-2 font-medium leading-relaxed">Encrypted cashier login portal ensuring secure terminal access and shift tracking.</p>
                                         </div>
                                     </div>
                                 </motion.div>
 
-                                {/* Feature 2 */}
+                                {/* Feature 2: Live Notifications */}
                                 <motion.div
                                     className="group bg-white border border-orange-400/65 rounded-2xl p-5 md:p-6 hover:border-orange-500/25 transition-all duration-500 hover:bg-orange-50/10 shadow-sm flex flex-col justify-between"
                                     {...globalRevealProps}
                                 >
-                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10]">
-                                        <img alt="Portfolio Allocation" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6g4AP617N_r3pjPw2sE21ArNZNFdm1i6qTA9w_CxYSLHwCU9A0fmLs1-svz9ZoIc0k9iAO3HrG4C7aT4VNrr0Rkz_HRfVUfO4jIXxOPdeg15AAzKj6qiGyy7xGKrlenRkosp4I0mK67Ck9fpm2oCLJW_GHPjdpgWXaLvwwCwMOQBslDnshLf5o1EVMQga2NpTEEwVAc0Fms3-6ANKhdXroLNpo5QDxLY-GGtnc-muzYhnDEB7-D-0owNmr6X9BETkyPE9EAvS3h9J" />
-                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10] bg-slate-50 p-4">
+                                        <img alt="Live Notifications" className="w-full h-full object-contain grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/bakery-notifications.png" />
+                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-orange-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">02 / RISK MGMT</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Portfolio Allocation</h4>
+                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">02 / NOTIFICATIONS</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Live Notifications</h4>
+                                            <p className="text-xs text-slate-500 mt-2 font-medium leading-relaxed">Real-time alerts and system activities for shift summaries and counter status.</p>
                                         </div>
                                     </div>
                                 </motion.div>
 
-                                {/* Feature 3 */}
+                                {/* Feature 3: Discount Management */}
                                 <motion.div
                                     className="group bg-white border border-orange-400/65 rounded-2xl p-5 md:p-6 hover:border-orange-500/25 transition-all duration-500 hover:bg-orange-50/10 shadow-sm flex flex-col justify-between"
                                     {...globalRevealProps}
                                 >
-                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10]">
-                                        <img alt="Trading Terminal" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Vlse04m9Cr_HHxbFMqSaKPkTVx3dpytRQLODuUJmtems15DVb4RVnZRYEyZ98kHDJX2qVd4qGEsougfeiDZA5jyx9nAR4NhWZqGhKg_JJQ9bQEEdrrkTuuzojrpBe-cP0vwN71NonSJPrTcFPiPQtxYSkYBrj8QoUxdImGUBhFR0DO4XN4alkgu6ZQtwPGXm4qZGLDwMCDK1O4siz95yUWXJTCjpFHujzpfuXFMTFCqUSM5cOwjU34sBOjtM1yfr6f09AZxbZxoE" />
-                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10] bg-slate-50 p-4">
+                                        <img alt="Discount Management" className="w-full h-full object-contain grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/bakery-discounts.png" />
+                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-orange-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">03 / EXECUTION</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Trading Terminal</h4>
+                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">03 / DISCOUNTS</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Discount Management</h4>
+                                            <p className="text-xs text-slate-500 mt-2 font-medium leading-relaxed">Track active promotions and manage seasonal offers with custom validity periods.</p>
                                         </div>
                                     </div>
                                 </motion.div>
 
-                                {/* Feature 4 */}
+                                {/* Feature 4: Sales History */}
                                 <motion.div
                                     className="group bg-white border border-orange-400/65 rounded-2xl p-5 md:p-6 hover:border-orange-500/25 transition-all duration-500 hover:bg-orange-50/10 shadow-sm flex flex-col justify-between"
                                     {...globalRevealProps}
                                 >
-                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10]">
-                                        <img alt="Audit Trail" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFMV2Ot1qu1wEYHc0gGAQajdlDX_SSE6ySfTVdWPswhEwz7dx2ajEFtz9q6Xa2nOC_mYpMN9Teaisp4rMcu64iNrcw9CA8hX0ceFLPtkjstNB6e-PcVf2o0WJ3niDpdzc1EhSfv2uVYOKJwVfKvobdjr9yKlF9dAUAuFSVrHlXeEcGRkfNViVLGNku0Jhqm0Vf145sIyFsO_eFfnCVDcjJlg_UWfULv0VQ9f79AGaqyOcZQXdC584gB1Hk5eqyGUdKwmBPw2dS2fx" />
-                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/10] bg-slate-50 p-4">
+                                        <img alt="Sales History" className="w-full h-full object-contain grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/bakery-sales.png" />
+                                        <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-orange-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">04 / COMPLIANCE</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Audit Trail</h4>
+                                            <span className="text-[10px] font-mono text-orange-600 uppercase tracking-[0.3em] block mb-1.5">04 / SALES</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">Sales History</h4>
+                                            <p className="text-xs text-slate-500 mt-2 font-medium leading-relaxed">Comprehensive tracking of total revenue, transactions, and average order values.</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -924,7 +937,94 @@ const FintechDashboard = () => {
                 </div>
             </main>
 
-            <RelatedProjects currentProject="fintech" isDarkTheme={false} />
+            {/* Modernized Fintech Bottom Dashboards Section */}
+            <section className="relative z-10 py-12 mt-12 border-t border-orange-200/40 bg-white/40 backdrop-blur-sm">
+                <div className="max-w-[1400px] mx-auto px-6 md:px-8">
+                    <motion.div
+                        className="mb-12"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-800 font-sans">
+                            Project Showcase
+                        </h2>
+                        <p className="font-sans text-sm md:text-base leading-relaxed tracking-wide text-slate-500 mt-4 max-w-xl">
+                            A selection of other engineered platforms and high-performance digital assets built for modern enterprises.
+                        </p>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Card 1: E-Commerce Build */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <Link
+                                to="/project/ecommerce-build"
+                                className="group block bg-white/80 hover:bg-white border border-orange-200 hover:border-orange-400 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_15px_40px_rgba(234,88,12,0.06)] flex flex-col justify-between h-[360px]"
+                            >
+                                <div className="overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/9] mb-6">
+                                    <img
+                                        alt="E-Commerce Build"
+                                        className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                                        src="/project-3.jpg"
+                                    />
+                                    <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                                </div>
+                                <div className="flex justify-between items-end border-l border-orange-500/40 pl-4 mt-auto">
+                                    <div>
+                                        <span className="text-[9px] font-mono text-orange-600 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 01</span>
+                                        <h3 className="font-sans text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">
+                                            E-Commerce Build
+                                        </h3>
+                                    </div>
+                                    <span className="material-symbols-outlined text-orange-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                                        arrow_outward
+                                    </span>
+                                </div>
+                            </Link>
+                        </motion.div>
+
+                        {/* Card 2: AI Booking System */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                        >
+                            <Link
+                                to="/project/ai-booking-system"
+                                className="group block bg-white/80 hover:bg-white border border-orange-200 hover:border-orange-400 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_15px_40px_rgba(234,88,12,0.06)] flex flex-col justify-between h-[360px]"
+                            >
+                                <div className="overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/9] mb-6">
+                                    <img
+                                        alt="AI Booking System"
+                                        className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                                        src="/project-1.jpg"
+                                    />
+                                    <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
+                                </div>
+                                <div className="flex justify-between items-end border-l border-orange-500/40 pl-4 mt-auto">
+                                    <div>
+                                        <span className="text-[9px] font-mono text-orange-600 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 02</span>
+                                        <h3 className="font-sans text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">
+                                            AI Booking System
+                                        </h3>
+                                    </div>
+                                    <span className="material-symbols-outlined text-orange-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                                        arrow_outward
+                                    </span>
+                                </div>
+                            </Link>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
             <Footer theme="light-fintech" isDarkTheme={false} />
         </div>
     );
