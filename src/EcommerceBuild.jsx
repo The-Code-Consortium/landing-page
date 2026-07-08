@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import RelatedProjects from './components/RelatedProjects';
 
 const globalRevealProps = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: false, amount: 0.3 },
+    viewport: { once: true, amount: 0.3 },
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
 };
 
@@ -933,7 +933,7 @@ const EcommerceBuild = () => {
             <main className="pt-24">
                 {/* Hero Showcase Section with Backlight Starburst & Scale-in animation */}
                 <section className="relative px-8 md:px-16 pt-10 pb-20 overflow-hidden flex items-center justify-center min-h-[85vh] bg-[#0b0f19]">
-                    
+
                     {/* Cinematic Starburst Central Light Splash Effect */}
                     <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none overflow-hidden">
                         {/* Inner Core */}
@@ -970,15 +970,16 @@ const EcommerceBuild = () => {
                     <div className="w-full max-w-[1440px] mx-auto relative z-10">
                         {/* Interactive Hero Showcase Block: HRIS Shell */}
                         <motion.div
-                            initial={{ scale: 0.4, opacity: 0 }}
-                            animate={isLoading ? { scale: 0.4, opacity: 0 } : { scale: 1, opacity: 1 }}
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={isLoading ? { scale: 0.95, opacity: 0 } : { scale: 1, opacity: 1 }}
                             transition={{
                                 type: "spring",
-                                stiffness: 45,
-                                damping: 15,
-                                mass: 1.2,
-                                delay: 0.15
+                                stiffness: 90,
+                                damping: 20,
+                                mass: 0.8,
+                                delay: 0.1
                             }}
+                            style={{ willChange: "transform, opacity" }}
                             className="w-full bg-[#0b0f19] rounded-2xl border border-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.8)] overflow-hidden relative z-10 flex flex-col md:flex-row h-[620px]"
                         >
                             {/* Two-Tier Left Sidebar */}
@@ -1004,8 +1005,8 @@ const EcommerceBuild = () => {
                                                         onClick={() => handleModuleChange(mod.id)}
                                                         title={mod.label}
                                                         className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 relative group ${isActive
-                                                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                                                                : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+                                                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                                                            : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
                                                             }`}
                                                     >
                                                         <span className="material-symbols-outlined text-[20px]">{mod.icon}</span>
@@ -1042,8 +1043,8 @@ const EcommerceBuild = () => {
                                                         key={subTab}
                                                         onClick={() => setActiveSubTab(subTab)}
                                                         className={`w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium transition-all duration-150 flex items-center gap-3 ${isActive
-                                                                ? 'bg-blue-600 text-white font-semibold'
-                                                                : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.02]'
+                                                            ? 'bg-blue-600 text-white font-semibold'
+                                                            : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.02]'
                                                             }`}
                                                     >
                                                         <span className="truncate">{subTab}</span>
@@ -1145,7 +1146,7 @@ const EcommerceBuild = () => {
 
                 {/* Ambient Background Area below Command Center */}
                 <div className="relative overflow-hidden w-full bg-[#0b0f19]">
-                    
+
                     {/* Slow-drifting premium ambient glows */}
                     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
                         {/* Soft blue ambient glow top-left */}
@@ -1194,7 +1195,7 @@ const EcommerceBuild = () => {
                         />
 
                         {/* Faint premium background grid panning effect */}
-                        <div 
+                        <div
                             className="absolute inset-0 opacity-[0.20] mix-blend-overlay bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:48px_48px]"
                             style={{
                                 maskImage: 'radial-gradient(ellipse_at_center, black, transparent 80%)',
@@ -1231,153 +1232,240 @@ const EcommerceBuild = () => {
 
                     {/* Technical Split Panel: Deep Midnight Blue Background */}
                     <section className="relative z-10 border-b border-white/10 bg-[radial-gradient(rgba(59,130,246,0.03)_1px,transparent_1px)] [background-size:32px_32px]">
+                        <motion.div
+                            className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[600px]"
+                            {...globalRevealProps}
+                        >
+                            {/* Left Column: Narratives */}
+                            <div className="md:col-span-8 p-8 md:p-12 border-r border-white/10 space-y-12 md:space-y-16">
+                                <div className="space-y-4">
+                                    <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 01 ] THE COMPLEX CHALLENGE</span>
+                                    <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">System Requirements: Database Consistency</h2>
+                                    <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
+                                        Enterprise employer portal architectures frequently experience race conditions, split-brain payroll processing locks, and latency spikes during high-volume end-of-month reconciliation events. We set out to achieve atomic database transitions and real-time personnel updates under heavy concurrent HR loads.
+                                    </p>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 02 ] THE CUSTOM SOLUTION</span>
+                                    <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">Distributed Personnel Grid</h2>
+                                    <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
+                                        We engineered a modular personnel coordination application stack. By placing read-heavy profile metadata on a fast Redis caching engine and using isolated PostgreSQL read-replicas, employee dashboards compile in sub-100ms times while salary ledgers remain strictly transactional.
+                                    </p>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 03 ] ENGINEERING RESULTS</span>
+                                    <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">Zero Ledger Failures</h2>
+                                    <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
+                                        The revamped distributed pipeline completely eliminated reconciliation collision errors. Database transaction queue latencies dropped by 45%, IT help-desk routing speeds increased by 30%, and personnel lifecycle synchronizations completed globally in under 1.5 seconds.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Right Column: Metadata */}
+                            <div className="md:col-span-4 bg-white/[0.01] backdrop-blur-md p-8 md:p-12 space-y-10 flex flex-col justify-between">
+                                <div className="border-b border-white/5 pb-6">
+                                    <span className="text-[10px] font-mono text-blue-400 uppercase block mb-2 tracking-[0.2em] font-bold">CLIENT</span>
+                                    <span className="font-sans text-xl md:text-2xl font-bold text-white tracking-tight">Global Workforce Corp</span>
+                                </div>
+
+                                <div className="border-b border-white/5 pb-6">
+                                    <span className="text-[10px] font-mono text-blue-400 uppercase block mb-2 tracking-[0.2em] font-bold">ROLE</span>
+                                    <div className="space-y-1.5">
+                                        <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Enterprise Architecture</span>
+                                        <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Full-Stack Engineering</span>
+                                        <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Database Design</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <span className="text-[10px] font-mono text-blue-400 uppercase block mb-4 tracking-[0.2em] font-bold">TECH STACK</span>
+                                    <div className="flex flex-wrap gap-2">
+                                        {['NODE.JS', 'POSTGRESQL', 'GRAPHQL', 'REDIS', 'DOCKER', 'KUBERNETES', 'TAILWIND CSS'].map((tech) => (
+                                            <span key={tech} className="px-3 py-1 bg-white/[0.03] border border-white/10 rounded-full text-slate-350 font-mono text-[9px] uppercase tracking-wider">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </section>
+
+                    {/* Multi-Feature Gallery: Dark Charcoal Background */}
+                    <section className="relative z-10 px-8 md:px-16 py-16 md:py-24 bg-transparent">
+                        <motion.div
+                            className="max-w-[1440px] mx-auto"
+                            {...globalRevealProps}
+                        >
+                            <div className="flex items-center gap-8 mb-16">
+                                <h3 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-white whitespace-nowrap">Workforce Operations</h3>
+                                <div className="h-px bg-white/10 w-full"></div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                {/* Feature 1 */}
+                                <motion.div
+                                    className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-blue-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                    {...globalRevealProps}
+                                >
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                        <img alt="Payroll Ledger" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR_jXsHyQNEUqZ9B_u50oU5oviZqEYA7jv2exVBux546eDADEoFTwtyuHqHf2UIZQkB4g2C3up7x-g8YnB80QsKye8vKfDKyYjIDj7MM4x5VuApcRF4Y854iGZVfBPvwXSrc4_UV7wLrUsSxTOsgXohpc4r4elCSZDRKvyFYkeVKJpufzvZMoi8KtLZmLGIqtMKN1mIRUgomXQ7aeSeNwQFrxxLM4_h4J4u6O077TXebeeG7WzP2O3WY0Wn48ITm4OKyMjFkRWYrAW" />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    </div>
+                                    <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
+                                        <div>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">01 / FINANCE</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">Payroll Ledger</h4>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Feature 2 */}
+                                <motion.div
+                                    className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-cyan-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                    {...globalRevealProps}
+                                >
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                        <img alt="Workforce Mapping" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6g4AP617N_r3pjPw2sE21ArNZNFdm1i6qTA9w_CxYSLHwCU9A0fmLs1-svz9ZoIc0k9iAO3HrG4C7aT4VNrr0Rkz_HRfVUfO4jIXxOPdeg15AAzKj6qiGyy7xGKrlenRkosp4I0mK67Ck9fpm2oCLJW_GHPjdpgWXaLvwwCwMOQBslDnshLf5o1EVMQga2NpTEEwVAc0Fms3-6ANKhdXroLNpo5QDxLY-GGtnc-muzYhnDEB7-D-0owNmr6X9BETkyPE9EAvS3h9J" />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    </div>
+                                    <div className="flex justify-between items-start border-l border-cyan-500/40 pl-5 mb-1">
+                                        <div>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">02 / WORKFORCE</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">Workforce Mapping</h4>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Feature 3 */}
+                                <motion.div
+                                    className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-blue-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                    {...globalRevealProps}
+                                >
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                        <img alt="Ticketing Flow" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Vlse04m9Cr_HHxbFMqSaKPkTVx3dpytRQLODuUJmtems15DVb4RVnZRYEyZ98kHDJX2qVd4qGEsougfeiDZA5jyx9nAR4NhWZqGhKg_JJQ9bQEEdrrkTuuzojrpBe-cP0vwN71NonSJPrTcFPiPQtxYSkYBrj8QoUxdImGUBhFR0DO4XN4alkgu6ZQtwPGXm4qZGLDwMCDK1O4siz95yUWXJTCjpFHujzpfuXFMTFCqUSM5cOwjU34sBOjtM1yfr6f09AZxbZxoE" />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    </div>
+                                    <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
+                                        <div>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">03 / OPERATIONS</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-350 transition-colors leading-snug">Ticketing Flow</h4>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Feature 4 */}
+                                <motion.div
+                                    className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-emerald-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
+                                    {...globalRevealProps}
+                                >
+                                    <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
+                                        <img alt="CV Indexing Engine" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFMV2Ot1qu1wEYHc0gGAQajdlDX_SSE6ySfTVdWPswhEwz7dx2ajEFtz9q6Xa2nOC_mYpMN9Teaisp4rMcu64iNrcw9CA8hX0ceFLPtkjstNB6e-PcVf2o0WJ3niDpdzc1EhSfv2uVYOKJwVfKvobdjr9yKlF9dAUAuFSVrHlXeEcGRkfNViVLGNku0Jhqm0Vf145sIyFsO_eFfnCVDcjJlg_UWfULv0VQ9f79AGaqyOcZQXdC584gB1Hk5eqyGUdKwmBPw2dS2fx" />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                    </div>
+                                    <div className="flex justify-between items-start border-l border-emerald-500/40 pl-5 mb-1">
+                                        <div>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">04 / TALENT</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-emerald-350 transition-colors leading-snug">CV Indexing Engine</h4>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </section>
+                </div>
+            </main>
+
+            {/* Modernized E-commerce Bottom Case Studies Section */}
+            <section className="relative z-10 py-12 mt-12 border-t border-white/10 bg-[#0b0f19]/40">
+                <div className="max-w-[1400px] mx-auto px-6 md:px-8">
                     <motion.div
-                        className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[600px]"
-                        {...globalRevealProps}
+                        className="mb-12"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        {/* Left Column: Narratives */}
-                        <div className="md:col-span-8 p-8 md:p-12 border-r border-white/10 space-y-12 md:space-y-16">
-                            <div className="space-y-4">
-                                <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 01 ] THE COMPLEX CHALLENGE</span>
-                                <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">System Requirements: Database Consistency</h2>
-                                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
-                                    Enterprise employer portal architectures frequently experience race conditions, split-brain payroll processing locks, and latency spikes during high-volume end-of-month reconciliation events. We set out to achieve atomic database transitions and real-time personnel updates under heavy concurrent HR loads.
-                                </p>
-                            </div>
-
-                            <div className="space-y-4">
-                                <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 02 ] THE CUSTOM SOLUTION</span>
-                                <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">Distributed Personnel Grid</h2>
-                                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
-                                    We engineered a modular personnel coordination application stack. By placing read-heavy profile metadata on a fast Redis caching engine and using isolated PostgreSQL read-replicas, employee dashboards compile in sub-100ms times while salary ledgers remain strictly transactional.
-                                </p>
-                            </div>
-
-                            <div className="space-y-4">
-                                <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-[0.4em] block">[ 03 ] ENGINEERING RESULTS</span>
-                                <h2 className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight">Zero Ledger Failures</h2>
-                                <p className="text-sm md:text-base text-slate-300 leading-relaxed max-w-2xl">
-                                    The revamped distributed pipeline completely eliminated reconciliation collision errors. Database transaction queue latencies dropped by 45%, IT help-desk routing speeds increased by 30%, and personnel lifecycle synchronizations completed globally in under 1.5 seconds.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Right Column: Metadata */}
-                        <div className="md:col-span-4 bg-white/[0.01] backdrop-blur-md p-8 md:p-12 space-y-10 flex flex-col justify-between">
-                            <div className="border-b border-white/5 pb-6">
-                                <span className="text-[10px] font-mono text-blue-400 uppercase block mb-2 tracking-[0.2em] font-bold">CLIENT</span>
-                                <span className="font-sans text-xl md:text-2xl font-bold text-white tracking-tight">Global Workforce Corp</span>
-                            </div>
-
-                            <div className="border-b border-white/5 pb-6">
-                                <span className="text-[10px] font-mono text-blue-400 uppercase block mb-2 tracking-[0.2em] font-bold">ROLE</span>
-                                <div className="space-y-1.5">
-                                    <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Enterprise Architecture</span>
-                                    <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Full-Stack Engineering</span>
-                                    <span className="font-sans text-sm md:text-base font-semibold text-slate-200 block">Database Design</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span className="text-[10px] font-mono text-blue-400 uppercase block mb-4 tracking-[0.2em] font-bold">TECH STACK</span>
-                                <div className="flex flex-wrap gap-2">
-                                    {['NODE.JS', 'POSTGRESQL', 'GRAPHQL', 'REDIS', 'DOCKER', 'KUBERNETES', 'TAILWIND CSS'].map((tech) => (
-                                        <span key={tech} className="px-3 py-1 bg-white/[0.03] border border-white/10 rounded-full text-slate-350 font-mono text-[9px] uppercase tracking-wider">
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white font-sans">
+                            Project Showcase
+                        </h2>
+                        <p className="font-sans text-sm md:text-base leading-relaxed tracking-wide text-slate-300 mt-4 max-w-xl">
+                            A selection of other engineered platforms and high-performance digital assets built for modern enterprises.
+                        </p>
                     </motion.div>
-                </section>
 
-                {/* Multi-Feature Gallery: Dark Charcoal Background */}
-                <section className="relative z-10 px-8 md:px-16 py-16 md:py-24 bg-transparent">
-                    <motion.div
-                        className="max-w-[1440px] mx-auto"
-                        {...globalRevealProps}
-                    >
-                        <div className="flex items-center gap-8 mb-16">
-                            <h3 className="font-sans text-3xl md:text-5xl font-bold tracking-tight text-white whitespace-nowrap">Workforce Operations</h3>
-                            <div className="h-px bg-white/10 w-full"></div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {/* Feature 1 */}
-                            <motion.div 
-                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-blue-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
-                                {...globalRevealProps}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Card 1: Fintech Dashboard */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <Link
+                                to="/project/fintech-dashboard"
+                                className="group block bg-slate-900/50 hover:bg-slate-900/80 border border-cyan-500/20 hover:border-cyan-500/40 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col justify-between h-[360px]"
                             >
-                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                    <img alt="Payroll Ledger" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR_jXsHyQNEUqZ9B_u50oU5oviZqEYA7jv2exVBux546eDADEoFTwtyuHqHf2UIZQkB4g2C3up7x-g8YnB80QsKye8vKfDKyYjIDj7MM4x5VuApcRF4Y854iGZVfBPvwXSrc4_UV7wLrUsSxTOsgXohpc4r4elCSZDRKvyFYkeVKJpufzvZMoi8KtLZmLGIqtMKN1mIRUgomXQ7aeSeNwQFrxxLM4_h4J4u6O077TXebeeG7WzP2O3WY0Wn48ITm4OKyMjFkRWYrAW" />
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                <div className="overflow-hidden rounded-xl border border-white/10 relative aspect-[16/9] mb-6">
+                                    <img
+                                        alt="Fintech Dashboard"
+                                        className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                                        src="/project-2.jpg"
+                                    />
+                                    <div className="absolute inset-0 bg-cyan-950/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
-                                <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
+                                <div className="flex justify-between items-end border-l border-cyan-500/40 pl-4 mt-auto">
                                     <div>
-                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">01 / FINANCE</span>
-                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">Payroll Ledger</h4>
+                                        <span className="text-[9px] font-mono text-cyan-400 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 01</span>
+                                        <h3 className="font-sans text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                                            Fintech Dashboard
+                                        </h3>
                                     </div>
+                                    <span className="material-symbols-outlined text-cyan-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                                        arrow_outward
+                                    </span>
                                 </div>
-                            </motion.div>
+                            </Link>
+                        </motion.div>
 
-                            {/* Feature 2 */}
-                            <motion.div 
-                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-cyan-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
-                                {...globalRevealProps}
+                        {/* Card 2: AI Booking System */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                        >
+                            <Link
+                                to="/project/ai-booking-system"
+                                className="group block bg-slate-900/50 hover:bg-slate-900/80 border border-cyan-500/20 hover:border-cyan-500/40 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col justify-between h-[360px]"
                             >
-                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                    <img alt="Workforce Mapping" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6g4AP617N_r3pjPw2sE21ArNZNFdm1i6qTA9w_CxYSLHwCU9A0fmLs1-svz9ZoIc0k9iAO3HrG4C7aT4VNrr0Rkz_HRfVUfO4jIXxOPdeg15AAzKj6qiGyy7xGKrlenRkosp4I0mK67Ck9fpm2oCLJW_GHPjdpgWXaLvwwCwMOQBslDnshLf5o1EVMQga2NpTEEwVAc0Fms3-6ANKhdXroLNpo5QDxLY-GGtnc-muzYhnDEB7-D-0owNmr6X9BETkyPE9EAvS3h9J" />
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                <div className="overflow-hidden rounded-xl border border-white/10 relative aspect-[16/9] mb-6">
+                                    <img
+                                        alt="AI Booking System"
+                                        className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                                        src="/project-1.jpg"
+                                    />
+                                    <div className="absolute inset-0 bg-cyan-950/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
-                                <div className="flex justify-between items-start border-l border-cyan-500/40 pl-5 mb-1">
+                                <div className="flex justify-between items-end border-l border-cyan-500/40 pl-4 mt-auto">
                                     <div>
-                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">02 / WORKFORCE</span>
-                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">Workforce Mapping</h4>
+                                        <span className="text-[9px] font-mono text-cyan-400 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 02</span>
+                                        <h3 className="font-sans text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                                            AI Booking System
+                                        </h3>
                                     </div>
+                                    <span className="material-symbols-outlined text-cyan-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                                        arrow_outward
+                                    </span>
                                 </div>
-                            </motion.div>
+                            </Link>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
 
-                            {/* Feature 3 */}
-                            <motion.div 
-                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-blue-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
-                                {...globalRevealProps}
-                            >
-                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                    <img alt="Ticketing Flow" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Vlse04m9Cr_HHxbFMqSaKPkTVx3dpytRQLODuUJmtems15DVb4RVnZRYEyZ98kHDJX2qVd4qGEsougfeiDZA5jyx9nAR4NhWZqGhKg_JJQ9bQEEdrrkTuuzojrpBe-cP0vwN71NonSJPrTcFPiPQtxYSkYBrj8QoUxdImGUBhFR0DO4XN4alkgu6ZQtwPGXm4qZGLDwMCDK1O4siz95yUWXJTCjpFHujzpfuXFMTFCqUSM5cOwjU34sBOjtM1yfr6f09AZxbZxoE" />
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
-                                </div>
-                                <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
-                                    <div>
-                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">03 / OPERATIONS</span>
-                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-350 transition-colors leading-snug">Ticketing Flow</h4>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Feature 4 */}
-                            <motion.div 
-                                className="group bg-white/[0.01] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-emerald-500/25 transition-all duration-500 hover:bg-white/[0.02] shadow-2xl flex flex-col justify-between"
-                                {...globalRevealProps}
-                            >
-                                <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                    <img alt="CV Indexing Engine" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFMV2Ot1qu1wEYHc0gGAQajdlDX_SSE6ySfTVdWPswhEwz7dx2ajEFtz9q6Xa2nOC_mYpMN9Teaisp4rMcu64iNrcw9CA8hX0ceFLPtkjstNB6e-PcVf2o0WJ3niDpdzc1EhSfv2uVYOKJwVfKvobdjr9yKlF9dAUAuFSVrHlXeEcGRkfNViVLGNku0Jhqm0Vf145sIyFsO_eFfnCVDcjJlg_UWfULv0VQ9f79AGaqyOcZQXdC584gB1Hk5eqyGUdKwmBPw2dS2fx" />
-                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
-                                </div>
-                                <div className="flex justify-between items-start border-l border-emerald-500/40 pl-5 mb-1">
-                                    <div>
-                                        <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">04 / TALENT</span>
-                                        <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-emerald-350 transition-colors leading-snug">CV Indexing Engine</h4>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </section>
-            </div>
-        </main>
-
-            <RelatedProjects currentProject="ecommerce" isDarkTheme={true} />
             <Footer isDarkTheme={true} />
         </div>
     );
