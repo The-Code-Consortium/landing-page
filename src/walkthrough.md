@@ -1,10 +1,10 @@
-# Walkthrough of BakeryOS POS & Cashier Portal & Salon Management System Aesthetic Synchronization
+# Walkthrough of BakeryOS POS & Cashier Portal & Salon Management System Aesthetic Synchronization & Mobile Spacing & Layout Alignment
 
 I have unified the aesthetic styling of the **Salon Management System** page (featuring the **Bespoke Salon Portal** dashboard) by adapting its outer page container, ambient background glows, section divider weights, and navigation/footer blocks to a light-themed salon aesthetic with navy and vibrant indigo accents.
 
 I have also updated the "Project Showcase" sections across all project pages and the main landing page to form a clean, interconnected portfolio.
 
-Lastly, I renamed the main page components and files to align with their actual project titles, updated all respective routes and imports, updated URL paths globally across all link references, and configured the salon page navbar background to perfectly align with the footer background.
+Lastly, I renamed the main page components and files to align with their actual project titles, updated all respective routes and imports, updated URL paths globally across all link references, configured the salon page navbar background to perfectly align with the footer background, implemented mobile responsiveness across the primary project dashboards, and refined spacing and alignment for high-quality layout presentation on mobile viewports.
 
 ## Implementation Details
 
@@ -55,10 +55,32 @@ Lastly, I renamed the main page components and files to align with their actual 
    - Updated route configurations inside [App.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/App.jsx).
    - Re-mapped showcase destinations in [BakeryDashboard.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/BakeryDashboard.jsx), [HrisDashboard.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/HrisDashboard.jsx), [BespokeSalon.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/BespokeSalon.jsx), [App.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/App.jsx), and [RelatedProjects.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/components/RelatedProjects.jsx).
 
+7. **Mobile Responsiveness Enhancements (Dashboard Fixes)**:
+   - **Responsive Hero Titles**:
+     - Converted the fixed typography scale `text-6xl md:text-9xl` to `text-5xl md:text-7xl lg:text-9xl` and appended `break-words` to prevent layout overflow on narrow viewport resolutions across [BakeryDashboard.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/BakeryDashboard.jsx), [HrisDashboard.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/HrisDashboard.jsx), and [BespokeSalon.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/BespokeSalon.jsx).
+   - **Responsive Dashboard Containers & Sidebars**:
+     - Configured the main dashboard mockup wrapper grids to stack vertically on mobile and stretch horizontally on desktop via `flex flex-col lg:flex-row h-auto lg:h-[720px]` (or `lg:h-[620px]` where applicable).
+     - Configured sidebars and column panes to fit viewports dynamically using responsive prefixes (e.g., `w-full lg:w-64`, `w-full lg:w-[250px]`, `w-full lg:w-[350px]`) and variable heights (`h-auto lg:h-full`).
+   - **Swipeable Data Tables**:
+     - Wrapped all data tables in horizontal scroll containers (`overflow-x-auto`) paired with a minimum width buffer (`min-w-[600px]`) so mobile visitors can scroll tables cleanly without breaking screen boundaries.
+   - **Responsive Project Showcase Grids**:
+     - Unambiguously set bottom showcase grids to `grid grid-cols-1 md:grid-cols-2 gap-8` across all three dashboards to form a clean single-column stacked layout on mobile screens.
+
+8. **Mobile Spacing & Alignment Refinements**:
+   - **Mobile Vertical Whitespace Reduction**:
+     - Scaled down vertical padding in dashboard mockup wrapper containers on mobile via `pt-6 md:pt-10 pb-8 md:pb-16` (or similar responsive modifiers).
+     - Removed excessive min-height properties on mobile viewports (`min-h-0 md:min-h-[90vh]`).
+     - Reduced scroll-reveal hero title section vertical space on mobile by modifying parameters to `min-h-0 md:min-h-[80vh]` and padding to `py-10 md:py-20`.
+   - **Footer Layout Refinements**:
+     - Updated [Footer.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/components/Footer.jsx) layout to stack vertically on mobile and display horizontally on desktop (`flex flex-col md:flex-row gap-4 md:gap-8`).
+     - Configured alignment styles to center on mobile and left-align on desktop (`items-center md:items-center text-center md:text-left justify-center md:justify-start`).
+   - **Logo Alignment**:
+     - Confirmed that the logo container on [Navbar.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/components/Navbar.jsx) remains flush-left on mobile while keeping navigation links hidden/toggleable via the hamburger drawer on the right.
+
 ## Verification
 
 - The project builds cleanly with zero compilation warnings:
 ```bash
 vite v8.0.14 building client environment for production...
-✓ built in 1.34s
+✓ built in 1.49s
 ```

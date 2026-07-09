@@ -209,7 +209,7 @@ const BakeryDashboard = () => {
 
             <main className="pt-20">
                 {/* Hero Showcase Section with Backlight Starburst & Scale-in animation */}
-                <section className="relative px-4 md:px-8 pt-10 pb-16 overflow-hidden flex items-center justify-center min-h-[90vh]">
+                <section className="relative px-4 md:px-8 pt-6 md:pt-10 pb-8 md:pb-16 overflow-hidden flex items-center justify-center min-h-0 md:min-h-[90vh]">
 
                     {/* Cinematic Starburst Central Light Splash Effect (Warm Peach & Orange Theme) */}
                     <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none overflow-hidden">
@@ -240,10 +240,10 @@ const BakeryDashboard = () => {
                                 delay: 0.1
                             }}
                             style={{ willChange: "transform, opacity" }}
-                            className="w-full bg-white/90 backdrop-blur-md rounded-2xl border border-orange-600/60 shadow-[0_25px_70px_-15px_rgba(234,88,12,0.08)] overflow-hidden relative z-10 flex flex-col md:flex-row h-[720px]"
+                            className="w-full bg-white/90 backdrop-blur-md rounded-2xl border border-orange-600/60 shadow-[0_25px_70px_-15px_rgba(234,88,12,0.08)] overflow-hidden relative z-10 flex flex-col lg:flex-row h-auto lg:h-[720px]"
                         >
                             {/* COLUMN 1: LEFT SIDEBAR (Fixed width, ~250px) */}
-                            <div className="w-full md:w-[250px] bg-[#FFF6ED]/85 backdrop-blur-md border-r border-orange-200/50 flex flex-col flex-shrink-0 justify-between h-full p-5 select-none">
+                            <div className="w-full lg:w-[250px] bg-[#FFF6ED]/85 backdrop-blur-md border-r border-orange-200/50 flex flex-col flex-shrink-0 justify-between h-auto lg:h-full p-5 select-none">
                                 <div className="space-y-6">
                                     {/* BakeryOS Logo with Orange Bread Icon */}
                                     <div className="flex items-center gap-3">
@@ -307,7 +307,7 @@ const BakeryDashboard = () => {
                             </div>
 
                             {/* COLUMN 2: MAIN CONTENT AREA (Flexible width, Billing View) */}
-                            <div className="flex-grow flex flex-col h-full border-r border-orange-200/50 bg-white/80 backdrop-blur-md">
+                            <div className="flex-grow flex flex-col h-auto lg:h-full border-r border-orange-200/50 bg-white/80 backdrop-blur-md">
                                 {/* Top Header Bar */}
                                 <div className="h-14 border-b border-orange-200/40 px-6 flex items-center justify-between select-none">
                                     {/* Breadcrumb */}
@@ -363,8 +363,9 @@ const BakeryDashboard = () => {
                                             </div>
 
                                             {/* Data Table */}
-                                            <div className="flex-grow overflow-y-auto border border-orange-200/50 rounded-xl min-h-[160px] bg-slate-50/20">
-                                                <table className="w-full text-left border-collapse text-xs">
+                                            <div className="flex-grow overflow-y-auto border border-orange-200/50 rounded-xl min-h-[160px] bg-slate-50/20 overflow-x-auto">
+                                                <div className="min-w-[600px]">
+                                                    <table className="w-full text-left border-collapse text-xs">
                                                     <thead>
                                                         <tr className="bg-orange-50/30 text-orange-950 font-bold border-b border-orange-200/30">
                                                             <th className="p-3">Item ID</th>
@@ -401,6 +402,7 @@ const BakeryDashboard = () => {
                                                         ))}
                                                     </tbody>
                                                 </table>
+                                            </div>
 
                                                 {/* Large Empty State (Show when filtered items empty) */}
                                                 {filteredProducts.length === 0 && (
@@ -479,8 +481,9 @@ const BakeryDashboard = () => {
                                                     </button>
                                                 </div>
 
-                                                <div className="flex-grow overflow-y-auto border border-orange-200/50 rounded-xl min-h-[160px] bg-slate-50/20">
-                                                    <table className="w-full text-left border-collapse text-xs">
+                                                <div className="flex-grow overflow-y-auto border border-orange-200/50 rounded-xl min-h-[160px] bg-slate-50/20 overflow-x-auto">
+                                                    <div className="min-w-[600px]">
+                                                        <table className="w-full text-left border-collapse text-xs">
                                                         <thead>
                                                             <tr className="bg-orange-50 text-orange-700 font-bold border-b border-orange-200/40">
                                                                 <th className="p-3">Item ID</th>
@@ -515,6 +518,7 @@ const BakeryDashboard = () => {
                                                             ))}
                                                         </tbody>
                                                     </table>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -642,7 +646,7 @@ const BakeryDashboard = () => {
                             </div>
 
                             {/* COLUMN 3: RIGHT PANEL (Current Bill / Checkout, Fixed width, ~350px) */}
-                            <div className="w-full md:w-[350px] bg-white/85 backdrop-blur-md flex flex-col justify-between h-full p-5 text-slate-800">
+                            <div className="w-full lg:w-[350px] bg-white/85 backdrop-blur-md flex flex-col justify-between h-auto lg:h-full p-5 text-slate-800">
                                 <div className="flex flex-col gap-4 min-h-0 flex-grow">
                                     <span className="text-xs font-black text-slate-800 border-b border-orange-200/40 pb-3 block">Current Bill #BILL-1001</span>
 
@@ -756,24 +760,24 @@ const BakeryDashboard = () => {
 
                     {/* Scroll-Reveal Section */}
                     <section
-                        className="min-h-[80vh] flex flex-col justify-center relative z-10 overflow-hidden py-20 border-b border-orange-400/80"
+                        className="min-h-0 md:min-h-[80vh] flex flex-col justify-center relative z-10 overflow-hidden py-10 md:py-20 border-b border-orange-400/80"
                     >
                         <div className="max-w-[1440px] w-full mx-auto px-8 md:px-16 flex flex-col items-start space-y-4">
                             <motion.span
                                 style={{ opacity: opacity1, y: y1 }}
-                                className="text-orange-600 text-6xl md:text-9xl font-black leading-none font-sans inline-block tracking-tighter"
+                                className="text-orange-600 text-5xl md:text-7xl lg:text-9xl font-black leading-none font-sans inline-block tracking-tighter break-words"
                             >
                                 Bakery
                             </motion.span>
                             <motion.span
                                 style={{ opacity: opacity2, y: y2 }}
-                                className="text-orange-600 text-6xl md:text-9xl font-black leading-none font-sans text-left inline-block tracking-tighter"
+                                className="text-orange-600 text-5xl md:text-7xl lg:text-9xl font-black leading-none font-sans text-left inline-block tracking-tighter break-words"
                             >
                                 Management
                             </motion.span>
                             <motion.span
                                 style={{ opacity: opacity3, y: y3 }}
-                                className="text-orange-600 text-6xl md:text-9xl font-black leading-none font-sans inline-block tracking-tighter"
+                                className="text-orange-600 text-5xl md:text-7xl lg:text-9xl font-black leading-none font-sans inline-block tracking-tighter break-words"
                             >
                                 System
                             </motion.span>

@@ -219,35 +219,37 @@ const HrisDashboard = () => {
                     <span className="text-xs uppercase tracking-wider text-slate-400 font-bold font-sans">Personnel Records</span>
                     <button className="text-[10px] text-blue-400 bg-blue-600/10 border border-blue-500/20 px-2 py-1 rounded hover:bg-blue-600 hover:text-white transition-colors font-sans">+ Add Employee</button>
                 </div>
-                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto">
-                    <table className="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
-                                <th className="p-3">Name</th>
-                                <th className="p-3">Role</th>
-                                <th className="p-3">Department</th>
-                                <th className="p-3">Location</th>
-                                <th className="p-3">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-white/5">
-                            {[
-                                { name: 'Sarah Connor', role: 'Support Supervisor', dept: 'BPO Operations', loc: 'Offshore Rail A', status: 'On Floor', color: 'text-emerald-400' },
-                                { name: 'John Doe', role: 'Senior Systems Engineer', dept: 'IT Infrastructure', loc: 'On-site HQ', status: 'Active', color: 'text-emerald-400' },
-                                { name: 'Miles Dyson', role: 'Lead Architect', dept: 'R&D Systems', loc: 'Remote (US)', status: 'On Leave', color: 'text-amber-400' },
-                                { name: 'Marcus Wright', role: 'Compliance Officer', dept: 'BPO Quality', loc: 'Offshore Rail B', status: 'Active', color: 'text-emerald-400' },
-                                { name: 'Ellen Ripley', role: 'Procurement Specialist', dept: 'Inventory Control', loc: 'On-site HQ', status: 'Inactive', color: 'text-rose-400' }
-                            ].map((emp, idx) => (
-                                <tr key={idx} className="hover:bg-white/[0.02]">
-                                    <td className="p-3 font-sans font-medium text-slate-200">{emp.name}</td>
-                                    <td className="p-3 text-slate-400">{emp.role}</td>
-                                    <td className="p-3 text-slate-400">{emp.dept}</td>
-                                    <td className="p-3 text-slate-400">{emp.loc}</td>
-                                    <td className="p-3"><span className={`font-bold ${emp.color}`}>{emp.status}</span></td>
+                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto overflow-x-auto">
+                    <div className="min-w-[600px]">
+                        <table className="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
+                                    <th className="p-3">Name</th>
+                                    <th className="p-3">Role</th>
+                                    <th className="p-3">Department</th>
+                                    <th className="p-3">Location</th>
+                                    <th className="p-3">Status</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                                {[
+                                    { name: 'Sarah Connor', role: 'Support Supervisor', dept: 'BPO Operations', loc: 'Offshore Rail A', status: 'On Floor', color: 'text-emerald-400' },
+                                    { name: 'John Doe', role: 'Senior Systems Engineer', dept: 'IT Infrastructure', loc: 'On-site HQ', status: 'Active', color: 'text-emerald-400' },
+                                    { name: 'Miles Dyson', role: 'Lead Architect', dept: 'R&D Systems', loc: 'Remote (US)', status: 'On Leave', color: 'text-amber-400' },
+                                    { name: 'Marcus Wright', role: 'Compliance Officer', dept: 'BPO Quality', loc: 'Offshore Rail B', status: 'Active', color: 'text-emerald-400' },
+                                    { name: 'Ellen Ripley', role: 'Procurement Specialist', dept: 'Inventory Control', loc: 'On-site HQ', status: 'Inactive', color: 'text-rose-400' }
+                                ].map((emp, idx) => (
+                                    <tr key={idx} className="hover:bg-white/[0.02]">
+                                        <td className="p-3 font-sans font-medium text-slate-200">{emp.name}</td>
+                                        <td className="p-3 text-slate-400">{emp.role}</td>
+                                        <td className="p-3 text-slate-400">{emp.dept}</td>
+                                        <td className="p-3 text-slate-400">{emp.loc}</td>
+                                        <td className="p-3"><span className={`font-bold ${emp.color}`}>{emp.status}</span></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className="flex justify-between items-center text-[10px] text-slate-500">
                     <span>TOTAL INDEXED: 14,820 EMPLOYEES</span>
@@ -407,34 +409,36 @@ const HrisDashboard = () => {
                     <span className="text-xs uppercase tracking-wider text-slate-400 font-bold font-sans">Payroll Engine</span>
                     <button className="text-[10px] text-emerald-400 bg-emerald-600/10 border border-emerald-500/20 px-2 py-1 rounded hover:bg-emerald-600 hover:text-white transition-colors font-sans">Execute Payroll Run</button>
                 </div>
-                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto">
-                    <table className="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
-                                <th className="p-3">Campaign Group</th>
-                                <th className="p-3">Gross Pay</th>
-                                <th className="p-3">Deductions</th>
-                                <th className="p-3">Net Pay</th>
-                                <th className="p-3">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-white/5">
-                            {[
-                                { group: 'IT Core Infrastructure', gross: '$145,200.00', ded: '$32,100.00', net: '$113,100.00', status: 'Pending Review', color: 'text-amber-400' },
-                                { group: 'BPO Campaign Alpha', gross: '$420,800.00', ded: '$95,400.00', net: '$325,400.00', status: 'Approved', color: 'text-emerald-400' },
-                                { group: 'BPO Campaign Beta', gross: '$390,400.00', ded: '$88,200.00', net: '$302,200.00', status: 'Approved', color: 'text-emerald-400' },
-                                { group: 'Operations Support Services', gross: '$84,000.00', ded: '$19,000.00', net: '$65,000.00', status: 'Pending Review', color: 'text-amber-400' }
-                            ].map((run, idx) => (
-                                <tr key={idx} className="hover:bg-white/[0.02]">
-                                    <td className="p-3 font-sans font-medium text-slate-200">{run.group}</td>
-                                    <td className="p-3 text-slate-400">{run.gross}</td>
-                                    <td className="p-3 text-slate-400">{run.ded}</td>
-                                    <td className="p-3 text-emerald-400 font-bold">{run.net}</td>
-                                    <td className="p-3"><span className={`font-bold ${run.color}`}>{run.status}</span></td>
+                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto overflow-x-auto">
+                    <div className="min-w-[600px]">
+                        <table className="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
+                                    <th className="p-3">Campaign Group</th>
+                                    <th className="p-3">Gross Pay</th>
+                                    <th className="p-3">Deductions</th>
+                                    <th className="p-3">Net Pay</th>
+                                    <th className="p-3">Status</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                                {[
+                                    { group: 'IT Core Infrastructure', gross: '$145,200.00', ded: '$32,100.00', net: '$113,100.00', status: 'Pending Review', color: 'text-amber-400' },
+                                    { group: 'BPO Campaign Alpha', gross: '$420,800.00', ded: '$95,400.00', net: '$325,400.00', status: 'Approved', color: 'text-emerald-400' },
+                                    { group: 'BPO Campaign Beta', gross: '$390,400.00', ded: '$88,200.00', net: '$302,200.00', status: 'Approved', color: 'text-emerald-400' },
+                                    { group: 'Operations Support Services', gross: '$84,000.00', ded: '$19,000.00', net: '$65,000.00', status: 'Pending Review', color: 'text-amber-400' }
+                                ].map((run, idx) => (
+                                    <tr key={idx} className="hover:bg-white/[0.02]">
+                                        <td className="p-3 font-sans font-medium text-slate-200">{run.group}</td>
+                                        <td className="p-3 text-slate-400">{run.gross}</td>
+                                        <td className="p-3 text-slate-400">{run.ded}</td>
+                                        <td className="p-3 text-emerald-400 font-bold">{run.net}</td>
+                                        <td className="p-3"><span className={`font-bold ${run.color}`}>{run.status}</span></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className="flex justify-between items-center text-[10px] text-slate-500">
                     <span>PAYROLL CYCLE: MONTH END (JUNE 2026)</span>
@@ -478,35 +482,37 @@ const HrisDashboard = () => {
                     <span className="text-xs uppercase tracking-wider text-slate-400 font-bold font-sans">Service Desk</span>
                     <button className="text-[10px] text-blue-400 bg-blue-600/10 border border-blue-500/20 px-2 py-1 rounded hover:bg-blue-600 hover:text-white transition-colors font-sans">+ Open New Ticket</button>
                 </div>
-                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto">
-                    <table className="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
-                                <th className="p-3">Ticket ID</th>
-                                <th className="p-3">User</th>
-                                <th className="p-3">Category</th>
-                                <th className="p-3">Description</th>
-                                <th className="p-3">Priority</th>
-                                <th className="p-3">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-white/5">
-                            {[
-                                { id: 'TIC-88392', user: 'Miles Dyson', cat: 'Hardware Request', desc: 'Request spare monitor charger replacement', pri: 'Medium', status: 'In Progress', color: 'text-blue-400' },
-                                { id: 'TIC-88120', user: 'John Doe', cat: 'Security Access', desc: 'VPN keys configuration request for staging', pri: 'High', status: 'Resolved', color: 'text-emerald-400' },
-                                { id: 'TIC-87941', user: 'Sarah Connor', cat: 'Active Directory', desc: 'Reset email sync logs and credentials lock', pri: 'Critical', status: 'Pending Review', color: 'text-amber-400' }
-                            ].map((tic, idx) => (
-                                <tr key={idx} className="hover:bg-white/[0.02]">
-                                    <td className="p-3 font-bold text-slate-200">{tic.id}</td>
-                                    <td className="p-3 text-slate-400">{tic.user}</td>
-                                    <td className="p-3 text-slate-400">{tic.cat}</td>
-                                    <td className="p-3 text-slate-400 truncate max-w-[120px]">{tic.desc}</td>
-                                    <td className="p-3 font-semibold text-slate-300">{tic.pri}</td>
-                                    <td className="p-3"><span className={`font-bold ${tic.color}`}>{tic.status}</span></td>
+                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto overflow-x-auto">
+                    <div className="min-w-[600px]">
+                        <table className="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
+                                    <th className="p-3">Ticket ID</th>
+                                    <th className="p-3">User</th>
+                                    <th className="p-3">Category</th>
+                                    <th className="p-3">Description</th>
+                                    <th className="p-3">Priority</th>
+                                    <th className="p-3">Status</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                                {[
+                                    { id: 'TIC-88392', user: 'Miles Dyson', cat: 'Hardware Request', desc: 'Request spare monitor charger replacement', pri: 'Medium', status: 'In Progress', color: 'text-blue-400' },
+                                    { id: 'TIC-88120', user: 'John Doe', cat: 'Security Access', desc: 'VPN keys configuration request for staging', pri: 'High', status: 'Resolved', color: 'text-emerald-400' },
+                                    { id: 'TIC-87941', user: 'Sarah Connor', cat: 'Active Directory', desc: 'Reset email sync logs and credentials lock', pri: 'Critical', status: 'Pending Review', color: 'text-amber-400' }
+                                ].map((tic, idx) => (
+                                    <tr key={idx} className="hover:bg-white/[0.02]">
+                                        <td className="p-3 font-bold text-slate-200">{tic.id}</td>
+                                        <td className="p-3 text-slate-400">{tic.user}</td>
+                                        <td className="p-3 text-slate-400">{tic.cat}</td>
+                                        <td className="p-3 text-slate-400 truncate max-w-[120px]">{tic.desc}</td>
+                                        <td className="p-3 font-semibold text-slate-300">{tic.pri}</td>
+                                        <td className="p-3"><span className={`font-bold ${tic.color}`}>{tic.status}</span></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className="flex justify-between items-center text-[10px] text-slate-500">
                     <span>RESOLVED TICKETS: 14</span>
@@ -588,32 +594,34 @@ const HrisDashboard = () => {
                     <span className="text-xs uppercase tracking-wider text-slate-400 font-bold font-sans">Active Assets</span>
                     <button className="text-[10px] text-blue-400 bg-blue-600/10 border border-blue-500/20 px-2 py-1 rounded hover:bg-blue-600 hover:text-white transition-colors font-sans">+ Check In/Out</button>
                 </div>
-                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto">
-                    <table className="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
-                                <th className="p-3">Asset ID</th>
-                                <th className="p-3">Name</th>
-                                <th className="p-3">User</th>
-                                <th className="p-3">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-white/5">
-                            {[
-                                { id: 'AST-9902', name: 'MacBook Pro 16" (M3 Max)', user: 'Miles Dyson', status: 'Allocated', color: 'text-emerald-400' },
-                                { id: 'AST-4820', name: 'ThinkPad P16 Gen 2', user: 'John Doe', status: 'Allocated', color: 'text-emerald-400' },
-                                { id: 'AST-1082', name: 'Dell UltraSharp 38"', user: 'Sarah Connor', status: 'In Storage', color: 'text-slate-400' },
-                                { id: 'AST-5821', name: 'MacBook Air 15" (M2)', user: 'Ellen Ripley', status: 'In Repair', color: 'text-rose-400' }
-                            ].map((asset, idx) => (
-                                <tr key={idx} className="hover:bg-white/[0.02]">
-                                    <td className="p-3 font-bold text-slate-200">{asset.id}</td>
-                                    <td className="p-3 text-slate-400">{asset.name}</td>
-                                    <td className="p-3 text-slate-400">{asset.user}</td>
-                                    <td className="p-3"><span className={`font-bold ${asset.color}`}>{asset.status}</span></td>
+                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto overflow-x-auto">
+                    <div className="min-w-[600px]">
+                        <table className="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
+                                    <th className="p-3">Asset ID</th>
+                                    <th className="p-3">Name</th>
+                                    <th className="p-3">User</th>
+                                    <th className="p-3">Status</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                                {[
+                                    { id: 'AST-9902', name: 'MacBook Pro 16" (M3 Max)', user: 'Miles Dyson', status: 'Allocated', color: 'text-emerald-400' },
+                                    { id: 'AST-4820', name: 'ThinkPad P16 Gen 2', user: 'John Doe', status: 'Allocated', color: 'text-emerald-400' },
+                                    { id: 'AST-1082', name: 'Dell UltraSharp 38"', user: 'Sarah Connor', status: 'In Storage', color: 'text-slate-400' },
+                                    { id: 'AST-5821', name: 'MacBook Air 15" (M2)', user: 'Ellen Ripley', status: 'In Repair', color: 'text-rose-400' }
+                                ].map((asset, idx) => (
+                                    <tr key={idx} className="hover:bg-white/[0.02]">
+                                        <td className="p-3 font-bold text-slate-200">{asset.id}</td>
+                                        <td className="p-3 text-slate-400">{asset.name}</td>
+                                        <td className="p-3 text-slate-400">{asset.user}</td>
+                                        <td className="p-3"><span className={`font-bold ${asset.color}`}>{asset.status}</span></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className="text-[10px] text-slate-500 text-center">
                     All changes must be signed off by both the employee and an IT representative.
@@ -660,36 +668,38 @@ const HrisDashboard = () => {
                     <span className="text-xs uppercase tracking-wider text-slate-400 font-bold font-sans">Live Leaderboard</span>
                     <span className="text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">FLOOR SLA: 98.2%</span>
                 </div>
-                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto">
-                    <table className="w-full text-left border-collapse text-xs">
-                        <thead>
-                            <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
-                                <th className="p-3">Rank</th>
-                                <th className="p-3">Team Campaign</th>
-                                <th className="p-3">Team Lead</th>
-                                <th className="p-3">Active Agents</th>
-                                <th className="p-3">Quality Score</th>
-                                <th className="p-3">Target Met %</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-white/5">
-                            {[
-                                { rank: '#1', campaign: 'Amazon Prime Support', lead: 'Sarah Connor', agents: 120, quality: '98.5%', target: '104.2%', color: 'text-emerald-400' },
-                                { rank: '#2', campaign: 'Google Workspace Help', lead: 'Marcus Wright', agents: 80, quality: '97.8%', target: '100.8%', color: 'text-emerald-400' },
-                                { rank: '#3', campaign: 'Apple Care Tier 1', lead: 'Ellen Ripley', agents: 110, quality: '96.4%', target: '98.5%', color: 'text-blue-400' },
-                                { rank: '#4', campaign: 'Microsoft Azure Support', lead: 'John Doe', agents: 45, quality: '95.2%', target: '94.6%', color: 'text-amber-400' }
-                            ].map((item, idx) => (
-                                <tr key={idx} className="hover:bg-white/[0.02]">
-                                    <td className="p-3 font-bold text-slate-300">{item.rank}</td>
-                                    <td className="p-3 font-sans font-medium text-slate-200">{item.campaign}</td>
-                                    <td className="p-3 text-slate-400">{item.lead}</td>
-                                    <td className="p-3 text-slate-400">{item.agents}</td>
-                                    <td className="p-3 text-slate-400">{item.quality}</td>
-                                    <td className="p-3"><span className={`font-bold ${item.color}`}>{item.target}</span></td>
+                <div className="bg-[#121826]/30 border border-white/5 rounded-xl overflow-hidden my-auto max-h-[300px] overflow-y-auto overflow-x-auto">
+                    <div className="min-w-[600px]">
+                        <table className="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr className="bg-[#121826]/80 text-slate-400 border-b border-white/10">
+                                    <th className="p-3">Rank</th>
+                                    <th className="p-3">Team Campaign</th>
+                                    <th className="p-3">Team Lead</th>
+                                    <th className="p-3">Active Agents</th>
+                                    <th className="p-3">Quality Score</th>
+                                    <th className="p-3">Target Met %</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                                {[
+                                    { rank: '#1', campaign: 'Amazon Prime Support', lead: 'Sarah Connor', agents: 120, quality: '98.5%', target: '104.2%', color: 'text-emerald-400' },
+                                    { rank: '#2', campaign: 'Google Workspace Help', lead: 'Marcus Wright', agents: 80, quality: '97.8%', target: '100.8%', color: 'text-emerald-400' },
+                                    { rank: '#3', campaign: 'Apple Care Tier 1', lead: 'Ellen Ripley', agents: 110, quality: '96.4%', target: '98.5%', color: 'text-blue-400' },
+                                    { rank: '#4', campaign: 'Microsoft Azure Support', lead: 'John Doe', agents: 45, quality: '95.2%', target: '94.6%', color: 'text-amber-400' }
+                                ].map((item, idx) => (
+                                    <tr key={idx} className="hover:bg-white/[0.02]">
+                                        <td className="p-3 font-bold text-slate-300">{item.rank}</td>
+                                        <td className="p-3 font-sans font-medium text-slate-200">{item.campaign}</td>
+                                        <td className="p-3 text-slate-400">{item.lead}</td>
+                                        <td className="p-3 text-slate-400">{item.agents}</td>
+                                        <td className="p-3 text-slate-400">{item.quality}</td>
+                                        <td className="p-3"><span className={`font-bold ${item.color}`}>{item.target}</span></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div className="text-[10px] text-slate-500 text-center">
                     Refreshed every 5 minutes from campaign dialer APIs and call recorder logs.
@@ -930,9 +940,9 @@ const HrisDashboard = () => {
 
             <Navbar isDarkTheme={true} hideOnScroll={true} />
 
-            <main className="pt-24">
+            <main className="pt-20">
                 {/* Hero Showcase Section with Backlight Starburst & Scale-in animation */}
-                <section className="relative px-8 md:px-16 pt-10 pb-20 overflow-hidden flex items-center justify-center min-h-[85vh] bg-[#0b0f19]">
+                <section className="relative px-4 md:px-16 pt-6 md:pt-10 pb-8 md:pb-20 overflow-hidden flex items-center justify-center min-h-0 md:min-h-[85vh] bg-[#0b0f19]">
 
                     {/* Cinematic Starburst Central Light Splash Effect */}
                     <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none overflow-hidden">
@@ -980,17 +990,17 @@ const HrisDashboard = () => {
                                 delay: 0.1
                             }}
                             style={{ willChange: "transform, opacity" }}
-                            className="w-full bg-[#0b0f19] rounded-2xl border border-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.8)] overflow-hidden relative z-10 flex flex-col md:flex-row h-[620px]"
+                            className="w-full bg-[#0b0f19] rounded-2xl border border-white/10 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.8)] overflow-hidden relative z-10 flex flex-col lg:flex-row h-auto lg:h-[620px]"
                         >
                             {/* Two-Tier Left Sidebar */}
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={isLoading ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
                                 transition={{ delay: 0, duration: 0.5, ease: "easeOut" }}
-                                className="flex flex-row flex-shrink-0 select-none h-full border-r border-white/10 w-full md:w-64"
+                                className="flex flex-row flex-shrink-0 select-none h-auto lg:h-full border-r border-white/10 w-full lg:w-64"
                             >
                                 {/* Tier 1 (Far Left): Narrow Icon Column */}
-                                <div className="w-16 bg-[#0a0d16] border-r border-white/5 flex flex-col items-center py-4 justify-between h-full">
+                                <div className="w-16 bg-[#0a0d16] border-r border-white/5 flex flex-col items-center py-4 justify-between h-auto lg:h-full">
                                     <div className="flex flex-col gap-6 items-center w-full">
                                         {/* Blue Brand Logo */}
                                         <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 shadow-sm">
@@ -1024,7 +1034,7 @@ const HrisDashboard = () => {
                                 </div>
 
                                 {/* Tier 2 (Inner Left): Menu List Column */}
-                                <div className="flex-grow bg-[#0e1322] p-4 flex flex-col justify-between h-full">
+                                <div className="flex-grow bg-[#0e1322] p-4 flex flex-col justify-between h-auto lg:h-full">
                                     <div className="flex flex-col gap-5">
                                         {/* Workspace Title Selector */}
                                         <div className="flex items-center justify-between px-2 border-b border-white/5 pb-3">
@@ -1066,7 +1076,7 @@ const HrisDashboard = () => {
                             </motion.div>
 
                             {/* Right Column: Main Stage Area */}
-                            <div className="flex-grow flex flex-col bg-[#0b0f19] h-full overflow-hidden">
+                            <div className="flex-grow flex flex-col bg-[#0b0f19] h-auto lg:h-full overflow-hidden">
                                 {/* Header Row */}
                                 <motion.div
                                     initial={{ opacity: 0, y: -10 }}
@@ -1206,24 +1216,24 @@ const HrisDashboard = () => {
 
                     {/* Scroll-Reveal Section */}
                     <section
-                        className="min-h-[80vh] flex flex-col justify-center relative z-10 overflow-hidden py-20 border-b border-white/10"
+                        className="min-h-0 md:min-h-[80vh] flex flex-col justify-center relative z-10 overflow-hidden py-10 md:py-20 border-b border-white/10"
                     >
                         <div className="max-w-[1440px] w-full mx-auto px-8 md:px-16 flex flex-col items-start space-y-4">
                             <motion.span
                                 style={{ opacity: opacity1, y: y1 }}
-                                className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
+                                className="text-white text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter break-words"
                             >
                                 HR
                             </motion.span>
                             <motion.span
                                 style={{ opacity: opacity2, y: y2 }}
-                                className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans text-left inline-block tracking-tighter"
+                                className="text-white text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-none font-sans text-left inline-block tracking-tighter break-words"
                             >
                                 INFORMATION
                             </motion.span>
                             <motion.span
                                 style={{ opacity: opacity3, y: y3 }}
-                                className="text-white text-6xl md:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter"
+                                className="text-white text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-none font-sans inline-block tracking-tighter break-words"
                             >
                                 SYSTEM
                             </motion.span>

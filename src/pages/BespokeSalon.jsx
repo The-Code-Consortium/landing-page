@@ -152,7 +152,7 @@ const BespokeSalon = () => {
 
             <main className="pt-20">
                 {/* Hero Showcase Section with Backlight Starburst & Scale-in animation */}
-                <section className="relative px-4 md:px-8 pt-10 pb-16 overflow-hidden flex items-center justify-center min-h-[90vh]">
+                <section className="relative px-4 md:px-8 pt-6 md:pt-10 pb-8 md:pb-16 overflow-hidden flex items-center justify-center min-h-0 md:min-h-[90vh]">
 
                     {/* Cinematic Starburst Central Light Splash Effect (Cool Indigo & Purple Theme) */}
                     <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none overflow-hidden">
@@ -183,10 +183,10 @@ const BespokeSalon = () => {
                                 delay: 0.1
                             }}
                             style={{ willChange: "transform, opacity" }}
-                            className="w-full bg-white/95 backdrop-blur-md rounded-2xl border border-indigo-600/30 shadow-[0_25px_70px_-15px_rgba(91,88,244,0.08)] overflow-hidden relative z-10 flex flex-col md:flex-row h-[720px]"
+                            className="w-full bg-white/95 backdrop-blur-md rounded-2xl border border-indigo-600/30 shadow-[0_25px_70px_-15px_rgba(91,88,244,0.08)] overflow-hidden relative z-10 flex flex-col lg:flex-row h-auto lg:h-[720px]"
                         >
                             {/* COLUMN 1: LEFT SIDEBAR (Deep Navy bg-slate-900) */}
-                            <div className="w-full md:w-[250px] bg-slate-900 border-r border-slate-800 flex flex-col flex-shrink-0 justify-between h-full p-5 select-none text-white">
+                            <div className="w-full lg:w-[250px] bg-slate-900 border-r border-slate-800 flex flex-col flex-shrink-0 justify-between h-auto lg:h-full p-5 select-none text-white">
                                 <div className="space-y-6">
                                     {/* Logo Area */}
                                     <div className="flex items-center gap-3">
@@ -241,7 +241,7 @@ const BespokeSalon = () => {
                             </div>
 
                             {/* COLUMN 2 & 3 Combined Container (Frosted glass light overlay) */}
-                            <div className="flex-grow flex flex-col h-full bg-white/80 backdrop-blur-md">
+                            <div className="flex-grow flex flex-col h-auto lg:h-full bg-white/80 backdrop-blur-md">
                                 {/* Top Header Bar */}
                                 <div className="h-14 border-b border-slate-200 px-6 flex items-center justify-between select-none">
                                     {/* Breadcrumb */}
@@ -395,18 +395,20 @@ const BespokeSalon = () => {
 
                                                     {/* Table headers with empty state container */}
                                                     <div className="flex-grow flex flex-col">
-                                                        <div className="border border-slate-200 rounded-xl overflow-hidden min-h-[220px] flex flex-col">
-                                                            <table className="w-full text-left border-collapse text-xs select-none">
-                                                                <thead>
-                                                                    <tr className="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
-                                                                        <th className="p-3">CLIENT INFO</th>
-                                                                        <th className="p-3">SERVICE ASSIGNED</th>
-                                                                        <th className="p-3">DATE & TIME</th>
-                                                                        <th className="p-3">STATUS</th>
-                                                                        <th className="p-3 text-right">ACTIONS</th>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
+                                                        <div className="border border-slate-200 rounded-xl overflow-hidden min-h-[220px] flex flex-col overflow-x-auto">
+                                                            <div className="min-w-[600px]">
+                                                                <table className="w-full text-left border-collapse text-xs select-none">
+                                                                    <thead>
+                                                                        <tr className="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
+                                                                            <th className="p-3">CLIENT INFO</th>
+                                                                            <th className="p-3">SERVICE ASSIGNED</th>
+                                                                            <th className="p-3">DATE & TIME</th>
+                                                                            <th className="p-3">STATUS</th>
+                                                                            <th className="p-3 text-right">ACTIONS</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
 
                                                             {/* Centered Empty State */}
                                                             <div className="flex-grow flex flex-col items-center justify-center text-center p-8">
@@ -432,24 +434,24 @@ const BespokeSalon = () => {
 
                     {/* Scroll-Reveal Section */}
                     <section
-                        className="min-h-[80vh] flex flex-col justify-center relative z-10 overflow-hidden py-20 border-b border-indigo-500/80"
+                        className="min-h-0 md:min-h-[80vh] flex flex-col justify-center relative z-10 overflow-hidden py-10 md:py-20 border-b border-indigo-500/80"
                     >
                         <div className="max-w-[1440px] w-full mx-auto px-8 md:px-16 flex flex-col items-start space-y-4">
-                            <motion.span
+                             <motion.span
                                 style={{ opacity: opacity1, y: y1 }}
-                                className="text-[#5b58f4] text-6xl md:text-9xl font-black leading-none font-sans inline-block tracking-tighter"
+                                className="text-[#5b58f4] text-5xl md:text-7xl lg:text-9xl font-black leading-none font-sans inline-block tracking-tighter break-words"
                             >
                                 Salon
                             </motion.span>
                             <motion.span
                                 style={{ opacity: opacity2, y: y2 }}
-                                className="text-[#5b58f4] text-6xl md:text-9xl font-black leading-none font-sans text-left inline-block tracking-tighter"
+                                className="text-[#5b58f4] text-5xl md:text-7xl lg:text-9xl font-black leading-none font-sans text-left inline-block tracking-tighter break-words"
                             >
                                 Management
                             </motion.span>
                             <motion.span
                                 style={{ opacity: opacity3, y: y3 }}
-                                className="text-[#5b58f4] text-6xl md:text-9xl font-black leading-none font-sans inline-block tracking-tighter"
+                                className="text-[#5b58f4] text-5xl md:text-7xl lg:text-9xl font-black leading-none font-sans inline-block tracking-tighter break-words"
                             >
                                 System
                             </motion.span>
