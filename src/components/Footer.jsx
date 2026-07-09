@@ -13,14 +13,14 @@ export default function Footer({ isDarkTheme = false, theme = "" }) {
           ? 'border-white/10 bg-[#0b0f19]'
           : 'border-gray-300 bg-white'
       }`}>
-      <div className="p-6 md:p-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-        <div className={`font-bold text-xl tracking-tight uppercase transition-colors duration-300 ${isLightFintech
+      <div className="p-6 md:p-12 flex flex-col md:flex-row justify-between items-center md:items-center gap-4 md:gap-8 text-center md:text-left">
+        <div className={`font-bold text-xl tracking-tight uppercase transition-colors duration-300 w-full md:w-auto text-center md:text-left ${isLightFintech
           ? 'text-slate-800'
           : isDarkTheme || isSalon ? 'text-white' : 'text-gray-900'
           }`}>
           The Code Consortium
         </div>
-        <div className="flex flex-wrap gap-8 font-mono text-xs uppercase">
+        <div className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-8 font-mono text-xs uppercase">
           <Link className={`transition-colors duration-300 ${isLightFintech
             ? 'text-slate-600 hover:text-orange-600 font-semibold'
             : isSalon
