@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import FintechDashboard from './FintechDashboard';
-import EcommerceBuild from './EcommerceBuild';
-import AIBookingSystem from './AIBookingSystem';
+import BakeryDashboard from './pages/BakeryDashboard';
+import HrisDashboard from './pages/HrisDashboard';
+import BespokeSalon from './pages/BespokeSalon';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Navbar from './components/Navbar';
@@ -422,19 +422,19 @@ function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-300">
             <MotionLink
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
-              to="/project/fintech-dashboard"
+              to="/project/bakery-os"
               {...globalRevealProps}
             >
               <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
                 <img
-                  alt="Fintech Dashboard"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  src="./project-2.jpg"
+                  alt="BakeryOS Cashier Portal"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                  src="/bakery-showcase.png"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
                 <div className="flex justify-between items-start mb-6">
-                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">Fintech Dashboard</h3>
+                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">BakeryOS Cashier Portal</h3>
                   <span className="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
                 </div>
                 <div className="font-mono text-xs tracking-widest uppercase text-gray-500 group-hover:text-black transition-colors mt-auto">
@@ -444,19 +444,19 @@ function LandingPage() {
             </MotionLink>
             <MotionLink
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
-              to="/project/ecommerce-build"
+              to="/project/hris-command-center"
               {...globalRevealProps}
             >
               <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
                 <img
-                  alt="E-Commerce Build"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  src="./project-3.jpg"
+                  alt="HRIS Command Center"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                  src="/hris-showcase.png"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
                 <div className="flex justify-between items-start mb-6">
-                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">E-Commerce Build</h3>
+                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">HRIS Command Center</h3>
                   <span className="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
                 </div>
                 <div className="font-mono text-xs tracking-widest uppercase text-gray-500 group-hover:text-black transition-colors mt-auto">
@@ -466,19 +466,19 @@ function LandingPage() {
             </MotionLink>
             <MotionLink
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
-              to="/project/ai-booking-system"
+              to="/project/bespoke-salon"
               {...globalRevealProps}
             >
               <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
                 <img
-                  alt="AI Booking System"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  src="./project-1.jpg"
+                  alt="Bespoke Salon Portal"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                  src="/salon-showcase.png"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
                 <div className="flex justify-between items-start mb-6">
-                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">AI Booking System</h3>
+                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">Bespoke Salon Portal</h3>
                   <span className="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
                 </div>
                 <div className="font-mono text-xs tracking-widest uppercase text-gray-500 group-hover:text-black transition-colors mt-auto">
@@ -564,9 +564,9 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/project/fintech-dashboard" element={<FintechDashboard />} />
-        <Route path="/project/ecommerce-build" element={<EcommerceBuild />} />
-        <Route path="/project/ai-booking-system" element={<AIBookingSystem />} />
+        <Route path="/project/bakery-os" element={<BakeryDashboard />} />
+        <Route path="/project/hris-command-center" element={<HrisDashboard />} />
+        <Route path="/project/bespoke-salon" element={<BespokeSalon />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>
