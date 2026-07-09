@@ -13,21 +13,21 @@ const globalRevealProps = {
 const allProjects = [
     {
         id: 'fintech',
-        title: 'Fintech Dashboard',
-        to: '/project/fintech-dashboard',
-        image: '/project-2.jpg'
+        title: 'BakeryOS Cashier Portal',
+        to: '/project/bakery-os',
+        image: '/bakery-showcase.png'
     },
     {
         id: 'ecommerce',
-        title: 'E-Commerce Build',
-        to: '/project/ecommerce-build',
-        image: '/project-3.jpg'
+        title: 'HRIS Command Center',
+        to: '/project/hris-command-center',
+        image: '/hris-showcase.png'
     },
     {
         id: 'booking',
-        title: 'AI Booking System',
-        to: '/project/ai-booking-system',
-        image: '/project-1.jpg'
+        title: 'Bespoke Salon Portal',
+        to: '/project/bespoke-salon',
+        image: '/salon-showcase.png'
     }
 ];
 

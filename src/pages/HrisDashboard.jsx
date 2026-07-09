@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const globalRevealProps = {
     initial: { opacity: 0, y: 30 },
@@ -31,7 +31,7 @@ const moduleSubTabs = {
     systems: ['HR Utilities']
 };
 
-const EcommerceBuild = () => {
+const HrisDashboard = () => {
     const [activeModule, setActiveModule] = useState('workspace');
     const [activeSubTab, setActiveSubTab] = useState('Dashboard');
     const [isLoading, setIsLoading] = useState(true);
@@ -1397,7 +1397,7 @@ const EcommerceBuild = () => {
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Card 1: Fintech Dashboard */}
+                        {/* Card 1: BakeryOS Cashier Portal */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -1405,14 +1405,14 @@ const EcommerceBuild = () => {
                             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <Link
-                                to="/project/fintech-dashboard"
+                                to="/project/bakery-os"
                                 className="group block bg-slate-900/50 hover:bg-slate-900/80 border border-cyan-500/20 hover:border-cyan-500/40 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col justify-between h-[360px]"
                             >
                                 <div className="overflow-hidden rounded-xl border border-white/10 relative aspect-[16/9] mb-6">
                                     <img
-                                        alt="Fintech Dashboard"
+                                        alt="BakeryOS Cashier Portal"
                                         className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                                        src="/project-2.jpg"
+                                        src="/bakery-showcase.png"
                                     />
                                     <div className="absolute inset-0 bg-cyan-950/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
@@ -1420,8 +1420,11 @@ const EcommerceBuild = () => {
                                     <div>
                                         <span className="text-[9px] font-mono text-cyan-400 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 01</span>
                                         <h3 className="font-sans text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
-                                            Fintech Dashboard
+                                            BakeryOS Cashier Portal
                                         </h3>
+                                        <p className="text-xs text-slate-400 mt-1.5 leading-relaxed max-w-sm">
+                                            A high-performance fintech point-of-sale interface for real-time stock and billing.
+                                        </p>
                                     </div>
                                     <span className="material-symbols-outlined text-cyan-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
                                         arrow_outward
@@ -1430,7 +1433,7 @@ const EcommerceBuild = () => {
                             </Link>
                         </motion.div>
 
-                        {/* Card 2: AI Booking System */}
+                        {/* Card 2: Bespoke Salon Portal */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -1438,14 +1441,14 @@ const EcommerceBuild = () => {
                             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                         >
                             <Link
-                                to="/project/ai-booking-system"
+                                to="/project/bespoke-salon"
                                 className="group block bg-slate-900/50 hover:bg-slate-900/80 border border-cyan-500/20 hover:border-cyan-500/40 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col justify-between h-[360px]"
                             >
                                 <div className="overflow-hidden rounded-xl border border-white/10 relative aspect-[16/9] mb-6">
                                     <img
-                                        alt="AI Booking System"
+                                        alt="Bespoke Salon Portal"
                                         className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                                        src="/project-1.jpg"
+                                        src="/salon-showcase.png"
                                     />
                                     <div className="absolute inset-0 bg-cyan-950/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
@@ -1453,8 +1456,11 @@ const EcommerceBuild = () => {
                                     <div>
                                         <span className="text-[9px] font-mono text-cyan-400 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 02</span>
                                         <h3 className="font-sans text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">
-                                            AI Booking System
+                                            Bespoke Salon Portal
                                         </h3>
+                                        <p className="text-xs text-slate-400 mt-1.5 leading-relaxed max-w-sm">
+                                            A smart scheduling and management interface for high-end salon operations.
+                                        </p>
                                     </div>
                                     <span className="material-symbols-outlined text-cyan-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
                                         arrow_outward
@@ -1471,4 +1477,4 @@ const EcommerceBuild = () => {
     );
 };
 
-export default EcommerceBuild;
+export default HrisDashboard;

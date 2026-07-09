@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const globalRevealProps = {
     initial: { opacity: 0, y: 30 },
@@ -11,7 +11,7 @@ const globalRevealProps = {
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
 };
 
-const FintechDashboard = () => {
+const BakeryDashboard = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('billing'); // 'billing', 'stock', 'wastage', 'sales', 'discount', 'notification'
 
@@ -165,7 +165,7 @@ const FintechDashboard = () => {
             </div>
 
             {/* Subtle light-themed background grid pattern */}
-            <div 
+            <div
                 className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#ea580c10_1px,transparent_1px),linear-gradient(to_bottom,#ea580c10_1px,transparent_1px)] bg-[size:4rem_4rem]"
                 style={{
                     maskImage: 'radial-gradient(ellipse_at_center, black, transparent 90%)',
@@ -854,7 +854,7 @@ const FintechDashboard = () => {
                                 <div className="h-px bg-orange-400/80 w-full"></div>
                             </div>
 
-                             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                 {/* Feature 1: Secure Access */}
                                 <motion.div
                                     className="group bg-white border border-orange-400/65 rounded-2xl p-5 md:p-6 hover:border-orange-500/25 transition-all duration-500 hover:bg-orange-50/10 shadow-sm flex flex-col justify-between"
@@ -951,7 +951,7 @@ const FintechDashboard = () => {
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Card 1: E-Commerce Build */}
+                        {/* Card 1: HRIS Command Center */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -959,14 +959,14 @@ const FintechDashboard = () => {
                             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <Link
-                                to="/project/ecommerce-build"
+                                to="/project/hris-command-center"
                                 className="group block bg-white/80 hover:bg-white border border-orange-200 hover:border-orange-400 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_15px_40px_rgba(234,88,12,0.06)] flex flex-col justify-between h-[360px]"
                             >
                                 <div className="overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/9] mb-6">
                                     <img
-                                        alt="E-Commerce Build"
+                                        alt="HRIS Command Center"
                                         className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                                        src="/project-3.jpg"
+                                        src="/hris-showcase.png"
                                     />
                                     <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
@@ -974,8 +974,11 @@ const FintechDashboard = () => {
                                     <div>
                                         <span className="text-[9px] font-mono text-orange-600 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 01</span>
                                         <h3 className="font-sans text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">
-                                            E-Commerce Build
+                                            HRIS Command Center
                                         </h3>
+                                        <p className="text-xs text-slate-500 mt-1.5 leading-relaxed max-w-sm">
+                                            A comprehensive employee management system and HR architecture dashboard tracking operations and activity timelines.
+                                        </p>
                                     </div>
                                     <span className="material-symbols-outlined text-orange-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
                                         arrow_outward
@@ -984,7 +987,7 @@ const FintechDashboard = () => {
                             </Link>
                         </motion.div>
 
-                        {/* Card 2: AI Booking System */}
+                        {/* Card 2: Bespoke Salon Portal */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -992,14 +995,14 @@ const FintechDashboard = () => {
                             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                         >
                             <Link
-                                to="/project/ai-booking-system"
+                                to="/project/bespoke-salon"
                                 className="group block bg-white/80 hover:bg-white border border-orange-200 hover:border-orange-400 rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_15px_40px_rgba(234,88,12,0.06)] flex flex-col justify-between h-[360px]"
                             >
                                 <div className="overflow-hidden rounded-xl border border-orange-100 relative aspect-[16/9] mb-6">
                                     <img
-                                        alt="AI Booking System"
+                                        alt="Bespoke Salon Portal"
                                         className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                                        src="/project-1.jpg"
+                                        src="/salon-showcase.png"
                                     />
                                     <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
@@ -1007,8 +1010,11 @@ const FintechDashboard = () => {
                                     <div>
                                         <span className="text-[9px] font-mono text-orange-600 uppercase tracking-[0.2em] block mb-1">CASE STUDY / 02</span>
                                         <h3 className="font-sans text-xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors leading-snug">
-                                            AI Booking System
+                                            Bespoke Salon Portal
                                         </h3>
+                                        <p className="text-xs text-slate-500 mt-1.5 leading-relaxed max-w-sm">
+                                            A smart scheduling and management interface for high-end salon operations.
+                                        </p>
                                     </div>
                                     <span className="material-symbols-outlined text-orange-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
                                         arrow_outward
@@ -1025,4 +1031,4 @@ const FintechDashboard = () => {
     );
 };
 
-export default FintechDashboard;
+export default BakeryDashboard;

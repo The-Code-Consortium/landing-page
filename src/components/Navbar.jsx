@@ -51,6 +51,7 @@ function ScrambleLink({ to, onClick, children, isDarkTheme, theme }) {
   }, []);
 
   const isLightFintech = theme === 'light-fintech';
+  const isSalon = theme === 'salon';
 
   return (
     <Link
@@ -59,7 +60,9 @@ function ScrambleLink({ to, onClick, children, isDarkTheme, theme }) {
       onMouseEnter={startScramble}
       onMouseLeave={stopScramble}
       className={`font-mono uppercase text-sm transition-colors duration-200 cursor-pointer select-none tracking-widest ${isLightFintech
-          ? 'text-slate-600 hover:text-orange-600'
+        ? 'text-slate-600 hover:text-orange-600'
+        : isSalon
+          ? 'text-slate-300 hover:text-indigo-400'
           : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
         }`}
     >
@@ -68,7 +71,7 @@ function ScrambleLink({ to, onClick, children, isDarkTheme, theme }) {
         return (
           <span
             key={index}
-            className={isScrambled ? (isLightFintech ? 'text-orange-500 font-bold' : 'text-blue-500 font-bold') : 'text-inherit'}
+            className={isScrambled ? (isLightFintech ? 'text-orange-500 font-bold' : isSalon ? 'text-indigo-400 font-bold' : 'text-blue-500 font-bold') : 'text-inherit'}
           >
             {char}
           </span>
@@ -134,13 +137,16 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
   };
 
   const isLightFintech = theme === 'light-fintech';
+  const isSalon = theme === 'salon';
 
   return (
     <motion.nav
       animate={{ y: isVisible ? 0 : -80 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
       className={`fixed top-0 left-0 w-full z-50 h-20 transition-colors duration-300 ${isLightFintech
-          ? 'bg-white/80 border-b border-orange-200/50 backdrop-blur-md'
+        ? 'bg-white/80 border-b border-orange-200/50 backdrop-blur-md'
+        : isSalon
+          ? 'bg-slate-900 border-b border-indigo-500/25'
           : isDarkTheme
             ? 'bg-[#0b0f19]/90 border-b border-white/10 backdrop-blur-md'
             : 'bg-white border-b border-gray-300'
@@ -154,8 +160,8 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
             src="/logo.png"
           />
           <div className={`font-mono text-base md:text-lg font-semibold tracking-widest uppercase transition-colors duration-300 ${isLightFintech
-              ? 'text-slate-800'
-              : isDarkTheme ? 'text-white' : 'text-gray-800'
+            ? 'text-slate-800'
+            : isDarkTheme || isSalon ? 'text-white' : 'text-gray-800'
             }`}>The Code Consortium</div>
         </Link>
 
@@ -194,7 +200,9 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
           </ScrambleLink>
           <Link
             className={`px-6 py-2 font-mono uppercase text-sm transition-all duration-200 border ${isLightFintech
-                ? 'bg-orange-600 border-orange-600 text-white hover:bg-transparent hover:text-orange-600'
+              ? 'bg-orange-600 border-orange-600 text-white hover:bg-transparent hover:text-orange-600'
+              : isSalon
+                ? 'bg-[#5b58f4] border-[#5b58f4] text-white hover:bg-transparent hover:text-[#5b58f4]'
                 : isDarkTheme
                   ? 'bg-blue-600 border-blue-600 text-white hover:bg-transparent hover:text-blue-400'
                   : 'bg-black text-white border-black hover:bg-white hover:text-black'
@@ -208,8 +216,8 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
 
         <button
           className={`md:hidden focus:outline-none transition-colors duration-300 ${isLightFintech
-              ? 'text-slate-800'
-              : isDarkTheme ? 'text-white' : 'text-black'
+            ? 'text-slate-800'
+            : isDarkTheme || isSalon ? 'text-white' : 'text-black'
             }`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle Menu"
@@ -223,12 +231,16 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
         <div className={`md:hidden absolute top-20 left-0 w-full z-50 flex flex-col p-6 space-y-4 shadow-lg border-b transition-colors duration-300 ${isLightFintech
-            ? 'bg-[#FFF8F0] border-orange-200/50 text-slate-800'
+          ? 'bg-[#FFF8F0] border-orange-200/50 text-slate-800'
+          : isSalon
+            ? 'bg-slate-900 border-indigo-500/25 text-white'
             : isDarkTheme ? 'bg-[#0b0f19] border-white/10 text-white' : 'bg-white border-gray-300'
           }`}>
           <Link
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
-                ? 'text-slate-600 hover:text-orange-600'
+              ? 'text-slate-600 hover:text-orange-600'
+              : isSalon
+                ? 'text-slate-350 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
             to={isHomePage ? "#about" : "/#about"}
@@ -238,7 +250,9 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
           </Link>
           <Link
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
-                ? 'text-slate-600 hover:text-orange-600'
+              ? 'text-slate-600 hover:text-orange-600'
+              : isSalon
+                ? 'text-slate-350 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
             to={isHomePage ? "#services" : "/#services"}
@@ -248,7 +262,9 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
           </Link>
           <Link
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
-                ? 'text-slate-600 hover:text-orange-600'
+              ? 'text-slate-600 hover:text-orange-600'
+              : isSalon
+                ? 'text-slate-350 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
             to={isHomePage ? "#showcase" : "/#showcase"}
@@ -258,7 +274,9 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
           </Link>
           <Link
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
-                ? 'text-slate-600 hover:text-orange-600'
+              ? 'text-slate-600 hover:text-orange-600'
+              : isSalon
+                ? 'text-slate-350 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
             to={isHomePage ? "#contact" : "/#contact"}
@@ -268,7 +286,9 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
           </Link>
           <Link
             className={`px-6 py-3 font-mono uppercase text-sm text-center border transition-all duration-200 ${isLightFintech
-                ? 'bg-orange-600 border-orange-600 text-white hover:bg-transparent hover:text-orange-600'
+              ? 'bg-orange-600 border-orange-600 text-white hover:bg-transparent hover:text-orange-600'
+              : isSalon
+                ? 'bg-[#5b58f4] border-[#5b58f4] text-white hover:bg-transparent hover:text-[#5b58f4]'
                 : isDarkTheme
                   ? 'bg-blue-600 border-blue-600 text-white hover:bg-transparent hover:text-blue-400'
                   : 'bg-black text-white border-black hover:bg-white hover:text-black'
