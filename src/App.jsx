@@ -6,6 +6,7 @@ import HrisDashboard from './pages/HrisDashboard';
 import BespokeSalon from './pages/BespokeSalon';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import ShowcaseArchive from './pages/ShowcaseArchive';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -419,13 +420,13 @@ function LandingPage() {
               A selection of engineered platforms and high-performance digital assets built for modern enterprises.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-300">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 md:p-8">
             <MotionLink
-              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
+              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
               to="/project/bakery-os"
               {...globalRevealProps}
             >
-              <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
                 <img
                   alt="BakeryOS Cashier Portal"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
@@ -443,15 +444,15 @@ function LandingPage() {
               </div>
             </MotionLink>
             <MotionLink
-              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
+              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
               to="/project/hris-command-center"
               {...globalRevealProps}
             >
-              <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
                 <img
                   alt="HRIS Command Center"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
-                  src="/hris-showcase.png"
+                  src="/image(5).png"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
@@ -465,11 +466,11 @@ function LandingPage() {
               </div>
             </MotionLink>
             <MotionLink
-              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden"
+              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
               to="/project/bespoke-salon"
               {...globalRevealProps}
             >
-              <div className="overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
                 <img
                   alt="Bespoke Salon Portal"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
@@ -486,6 +487,15 @@ function LandingPage() {
                 </div>
               </div>
             </MotionLink>
+          </div>
+          <div className="flex justify-center p-8 md:p-12 border-t border-gray-300">
+            <Link
+              to="/showcase"
+              className="group inline-flex items-center justify-center border border-gray-300 hover:border-black bg-white hover:bg-black text-black hover:text-white px-10 py-4 font-mono text-sm uppercase tracking-widest transition-all duration-300"
+            >
+              View All Projects
+              <span className="inline-block ml-3 transition-transform duration-300 group-hover:translate-x-2">→</span>
+            </Link>
           </div>
         </section>
 
@@ -567,6 +577,7 @@ export default function App() {
         <Route path="/project/bakery-os" element={<BakeryDashboard />} />
         <Route path="/project/hris-command-center" element={<HrisDashboard />} />
         <Route path="/project/bespoke-salon" element={<BespokeSalon />} />
+        <Route path="/showcase" element={<ShowcaseArchive />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
       </Routes>

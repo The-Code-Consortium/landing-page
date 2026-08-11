@@ -315,7 +315,7 @@ const BespokeSalon = () => {
                                                             <h3 className="font-bold text-slate-800 text-sm">VIP Event Inquiries</h3>
                                                         </div>
                                                         <div className="flex-grow flex flex-col items-center justify-center text-center">
-                                                            <span className="material-symbols-outlined text-slate-350 text-slate-300 text-4xl mb-2">event_busy</span>
+                                                            <span className="material-symbols-outlined text-slate-300 text-4xl mb-2">event_busy</span>
                                                             <span className="text-slate-400 text-xs font-bold">No VIP inquiries found.</span>
                                                         </div>
                                                     </div>
@@ -679,7 +679,7 @@ const BespokeSalon = () => {
                                     <img
                                         alt="HRIS Command Center"
                                         className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                                        src="/hris-showcase.png"
+                                        src="/image(5).png"
                                     />
                                     <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
