@@ -183,10 +183,10 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
             Services
           </ScrambleLink>
           <ScrambleLink
-            to={isHomePage ? "#showcase" : "/#showcase"}
-            onClick={(e) => handleLinkClick(e, 'showcase')}
+            to="/showcase"
             isDarkTheme={isDarkTheme}
             theme={theme}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Showcase
           </ScrambleLink>
@@ -240,7 +240,7 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
               ? 'text-slate-600 hover:text-orange-600'
               : isSalon
-                ? 'text-slate-350 hover:text-white'
+                ? 'text-slate-400 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
             to={isHomePage ? "#about" : "/#about"}
@@ -252,7 +252,7 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
               ? 'text-slate-600 hover:text-orange-600'
               : isSalon
-                ? 'text-slate-350 hover:text-white'
+                ? 'text-slate-400 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
             to={isHomePage ? "#services" : "/#services"}
@@ -264,11 +264,11 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
               ? 'text-slate-600 hover:text-orange-600'
               : isSalon
-                ? 'text-slate-350 hover:text-white'
+                ? 'text-slate-400 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
-            to={isHomePage ? "#showcase" : "/#showcase"}
-            onClick={(e) => handleLinkClick(e, 'showcase')}
+            to="/showcase"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Showcase
           </Link>
@@ -276,7 +276,7 @@ export default function Navbar({ isDarkTheme = false, hideOnScroll = false, them
             className={`font-mono uppercase text-sm transition-colors duration-200 ${isLightFintech
               ? 'text-slate-600 hover:text-orange-600'
               : isSalon
-                ? 'text-slate-350 hover:text-white'
+                ? 'text-slate-400 hover:text-white'
                 : isDarkTheme ? 'text-slate-400 hover:text-white' : 'text-gray-500 hover:text-black'
               }`}
             to={isHomePage ? "#contact" : "/#contact"}

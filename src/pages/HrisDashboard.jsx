@@ -1321,13 +1321,14 @@ const HrisDashboard = () => {
                                     {...globalRevealProps}
                                 >
                                     <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                        <img alt="Payroll Ledger" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR_jXsHyQNEUqZ9B_u50oU5oviZqEYA7jv2exVBux546eDADEoFTwtyuHqHf2UIZQkB4g2C3up7x-g8YnB80QsKye8vKfDKyYjIDj7MM4x5VuApcRF4Y854iGZVfBPvwXSrc4_UV7wLrUsSxTOsgXohpc4r4elCSZDRKvyFYkeVKJpufzvZMoi8KtLZmLGIqtMKN1mIRUgomXQ7aeSeNwQFrxxLM4_h4J4u6O077TXebeeG7WzP2O3WY0Wn48ITm4OKyMjFkRWYrAW" />
+                                        <img alt="Time & Attendance Hub" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/hris-feature-rota.png" />
                                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">01 / FINANCE</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors leading-snug">Payroll Ledger</h4>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">01 / FINANCE & OPS</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-350 transition-colors leading-snug">Time & Attendance Hub</h4>
+                                            <p className="text-xs text-slate-400 mt-2 leading-relaxed font-light">Manage operational rosters, process leave applications, and synchronize biometric data.</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -1338,13 +1339,14 @@ const HrisDashboard = () => {
                                     {...globalRevealProps}
                                 >
                                     <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                        <img alt="Workforce Mapping" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6g4AP617N_r3pjPw2sE21ArNZNFdm1i6qTA9w_CxYSLHwCU9A0fmLs1-svz9ZoIc0k9iAO3HrG4C7aT4VNrr0Rkz_HRfVUfO4jIXxOPdeg15AAzKj6qiGyy7xGKrlenRkosp4I0mK67Ck9fpm2oCLJW_GHPjdpgWXaLvwwCwMOQBslDnshLf5o1EVMQga2NpTEEwVAc0Fms3-6ANKhdXroLNpo5QDxLY-GGtnc-muzYhnDEB7-D-0owNmr6X9BETkyPE9EAvS3h9J" />
+                                        <img alt="Blueprint Hierarchy Map" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/hris-feature-hierarchy.png" />
                                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-cyan-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">02 / WORKFORCE</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">Workforce Mapping</h4>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">02 / PERSONNEL</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">Blueprint Hierarchy Map</h4>
+                                            <p className="text-xs text-slate-400 mt-2 leading-relaxed font-light">Restructure the organizational hierarchy by dynamically dragging connections between employee nodes.</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -1355,13 +1357,14 @@ const HrisDashboard = () => {
                                     {...globalRevealProps}
                                 >
                                     <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                        <img alt="Ticketing Flow" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Vlse04m9Cr_HHxbFMqSaKPkTVx3dpytRQLODuUJmtems15DVb4RVnZRYEyZ98kHDJX2qVd4qGEsougfeiDZA5jyx9nAR4NhWZqGhKg_JJQ9bQEEdrrkTuuzojrpBe-cP0vwN71NonSJPrTcFPiPQtxYSkYBrj8QoUxdImGUBhFR0DO4XN4alkgu6ZQtwPGXm4qZGLDwMCDK1O4siz95yUWXJTCjpFHujzpfuXFMTFCqUSM5cOwjU34sBOjtM1yfr6f09AZxbZxoE" />
+                                        <img alt="Dispatch Center" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/hris-feature-transport.png" />
                                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-blue-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">03 / OPERATIONS</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-350 transition-colors leading-snug">Ticketing Flow</h4>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">03 / TRANSPORT & FLEET</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-blue-350 transition-colors leading-snug">Dispatch Center</h4>
+                                            <p className="text-xs text-slate-400 mt-2 leading-relaxed font-light">Real-time multi-stop vehicle routing, directional clustering, overtime waves, and manifest operations.</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -1372,13 +1375,14 @@ const HrisDashboard = () => {
                                     {...globalRevealProps}
                                 >
                                     <div className="mb-6 overflow-hidden rounded-xl border border-white/10 relative aspect-[16/10]">
-                                        <img alt="CV Indexing Engine" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFMV2Ot1qu1wEYHc0gGAQajdlDX_SSE6ySfTVdWPswhEwz7dx2ajEFtz9q6Xa2nOC_mYpMN9Teaisp4rMcu64iNrcw9CA8hX0ceFLPtkjstNB6e-PcVf2o0WJ3niDpdzc1EhSfv2uVYOKJwVfKvobdjr9yKlF9dAUAuFSVrHlXeEcGRkfNViVLGNku0Jhqm0Vf145sIyFsO_eFfnCVDcjJlg_UWfULv0VQ9f79AGaqyOcZQXdC584gB1Hk5eqyGUdKwmBPw2dS2fx" />
+                                        <img alt="Ecosystem Manager" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="/hris-feature-ecosystem.png" />
                                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                                     </div>
                                     <div className="flex justify-between items-start border-l border-emerald-500/40 pl-5 mb-1">
                                         <div>
-                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">04 / TALENT</span>
-                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-emerald-350 transition-colors leading-snug">CV Indexing Engine</h4>
+                                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-[0.3em] block mb-1.5">04 / SYSTEM & TOOLS</span>
+                                            <h4 className="font-sans text-lg md:text-xl font-bold text-white group-hover:text-emerald-350 transition-colors leading-snug">Ecosystem Manager</h4>
+                                            <p className="text-xs text-slate-400 mt-2 leading-relaxed font-light">Scale your operations by enabling native modules built specifically for The Code Consortium infrastructure.</p>
                                         </div>
                                     </div>
                                 </motion.div>

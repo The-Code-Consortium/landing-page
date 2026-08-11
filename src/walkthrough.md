@@ -82,5 +82,38 @@ Lastly, I renamed the main page components and files to align with their actual 
 - The project builds cleanly with zero compilation warnings:
 ```bash
 vite v8.0.14 building client environment for production...
-✓ built in 1.49s
+✓ built in 1.23s
 ```
+
+## Additional Refinements
+
+1. **HRIS command Center Mockup Redesign ([HrisDashboard.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/HrisDashboard.jsx))**:
+   - Integrated the final visual layout matching the `image(5).png` layout reference exactly.
+   - Redirected all showcase references of the HRIS Command Center across the entire website ([App.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/App.jsx), [BespokeSalon.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/BespokeSalon.jsx), [BakeryDashboard.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/pages/BakeryDashboard.jsx), and [RelatedProjects.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/components/RelatedProjects.jsx)) to use the new `/image(5).png` screenshot.
+   - Completely replaced the inner contents of the HRIS Command Center mockup with a premium, state-driven dark-mode enterprise UI.
+   - **Unified Left Sidebar**:
+     - Removed the double-tier icon rail entirely, converting it into a single, unified sidebar block.
+     - Positioned the brand logo (`TCC OS` in bold white with `HRIS DATA PLANE` in cyan/slate) at the top of the sidebar.
+     - Positioned icons next to labels directly inside the navigation links.
+     - Synced menu links with subtabs: Dashboard, My Leaves, My Payslips, My IT Tickets, My Profile (CV), Time & Attendance, and Add-on Manager.
+     - Bottom profile footer section displaying the collapse button and the email/role metadata (`chloe.gonzalez1001@ccm...` and `SUPER ADMINISTRATOR`).
+   - **Boxed Hero & Card Uniformity**:
+     - Wrapped the "Command Center" hero block in a dedicated, dark-filled card container matching the style of other modules.
+     - Normalized card aesthetics: Hero, Core Infrastructure, Metrics, The Live Floor, and Actionable Alerts cards now share matching dark slate backgrounds, rounded-3xl corners, and subtle borders (`bg-slate-900 border border-white/5 rounded-3xl`).
+   - **Removed Internal Scrolling**:
+     - Deleted strict viewport heights (`h-screen`, `max-h-screen`, `h-[620px]`) and scroll wrappers (`overflow-y-auto`, `overflow-scroll`, `overflow-hidden`) from the stage container to allow the mockup block to naturally expand to match content heights.
+   - **Three Views**:
+     - *Dashboard*: Resized hero card with operations subtitle and `Monday, 10 August 2026` date pill, Core Infrastructure grid with rounded-3xl cards containing description text, metrics row with custom icon boxes (cyan, yellow, purple), and the "Live Floor" tracking center with centered metrics, `EXPECTED TODAY` pill, and shift breakdowns styled as card-list elements.
+     - *Rota*: Interactive Master Rota grid featuring employee rows and interactive dropdowns for changing shifts in real time, alongside filter options and a toggling Holiday Mode.
+     - *Add-ons*: Ecosystem Manager panel featuring a grid of installed, active modules (BPO, ID Card, Inventory, Transport) and locked premium expansions.
+   - *Actionable Alerts*: Added a dedicated card block at the bottom containing a pulsing red bell icon and pending items indicator.
+
+2. **Global Sizing Scale Down ([index.css](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/index.css))**:
+   - Added a global `zoom: 0.92` styling properties on `html` and `body` rules to simulate a scaled-down 90% browser zoom view.
+
+3. **Full-Width Footer Restructuring ([Footer.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/components/Footer.jsx), [RelatedProjects.jsx](file:///c:/Users/YAshan/Desktop/uiii/TTTTx2/landing-page/src/components/RelatedProjects.jsx))**:
+   - Restructured layout wrappers to support screen-wide `w-full` background colors and border grids, while keeping centered text content constrained to the default page layout widths.
+   - Synchronized background grid overlay designs matching individual themes.
+
+4. **Slate Link Visibility Corrections**:
+   - Replaced all obsolete Tailwind `text-slate-350` occurrences with standard text color classes to restore link contrast and readability.

@@ -626,7 +626,7 @@ const BakeryDashboard = () => {
                                                 </div>
                                                 {/* Centered Empty State */}
                                                 <div className="flex-grow flex flex-col items-center justify-center p-8 text-center bg-slate-50/10">
-                                                    <span className="material-symbols-outlined text-slate-350 text-5xl mb-3">inventory_2</span>
+                                                    <span className="material-symbols-outlined text-slate-400 text-5xl mb-3">inventory_2</span>
                                                     <h4 className="text-sm font-extrabold text-slate-800 mb-1">No product wastage records found</h4>
                                                     <p className="text-xs text-slate-400 font-medium">Products wasted will appear here</p>
                                                 </div>
@@ -686,7 +686,7 @@ const BakeryDashboard = () => {
                                             <div className="flex flex-col items-center justify-center h-full text-center py-20">
                                                 <span className="material-symbols-outlined text-slate-200 text-4xl mb-2">shopping_cart</span>
                                                 <p className="text-slate-400 text-xs font-semibold">No items added yet</p>
-                                                <p className="text-slate-350 text-[10px]">Click on products to add</p>
+                                                <p className="text-slate-400 text-[10px]">Click on products to add</p>
                                             </div>
                                         )}
                                     </div>
@@ -970,7 +970,7 @@ const BakeryDashboard = () => {
                                     <img
                                         alt="HRIS Command Center"
                                         className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                                        src="/hris-showcase.png"
+                                        src="/image(5).png"
                                     />
                                     <div className="absolute inset-0 bg-orange-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
                                 </div>
