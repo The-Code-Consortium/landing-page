@@ -39,13 +39,35 @@ export default function ShowcaseArchive() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 md:p-8">
           <MotionLink
             className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
+            to="/project/spear"
+            {...globalRevealProps}
+          >
+            <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300 flex items-center justify-center bg-gray-50/50">
+              <img
+                alt="Spear Hospitality Management"
+                className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
+                src="/spear-showcase.png"
+              />
+            </div>
+            <div className="p-8 flex flex-col justify-between">
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">Spear - Hotel PMS & Restaurant POS</h3>
+                <span className="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
+              </div>
+              <div className="font-mono text-xs tracking-widest uppercase text-gray-500 group-hover:text-black transition-colors mt-auto">
+                DETAILS <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+              </div>
+            </div>
+          </MotionLink>
+          <MotionLink
+            className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
             to="/project/bakery-os"
             {...globalRevealProps}
           >
-            <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+            <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300 flex items-center justify-center bg-gray-50/50">
               <img
                 alt="BakeryOS Cashier Portal"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
                 src="/bakery-showcase.png"
               />
             </div>
@@ -65,10 +87,10 @@ export default function ShowcaseArchive() {
             to="/project/hris-command-center"
             {...globalRevealProps}
           >
-            <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+            <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300 flex items-center justify-center bg-gray-50/50">
               <img
                 alt="HRIS Command Center"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
                 src="/image(5).png"
               />
             </div>
@@ -88,10 +110,10 @@ export default function ShowcaseArchive() {
             to="/project/bespoke-salon"
             {...globalRevealProps}
           >
-            <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+            <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300 flex items-center justify-center bg-gray-50/50">
               <img
                 alt="Bespoke Salon Portal"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
                 src="/salon-showcase.png"
               />
             </div>

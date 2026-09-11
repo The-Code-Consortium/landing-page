@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import BakeryDashboard from './pages/BakeryDashboard';
 import HrisDashboard from './pages/HrisDashboard';
@@ -7,6 +7,7 @@ import BespokeSalon from './pages/BespokeSalon';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ShowcaseArchive from './pages/ShowcaseArchive';
+import SpearDashboard from './pages/SpearDashboard';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -48,6 +49,34 @@ const pathVariants = {
 
 function LandingPage() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [formStatus, setFormStatus] = useState('idle');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    const formData = new FormData(e.target);
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormStatus('success');
+        e.target.reset();
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+        setTimeout(() => setFormStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }
+  };
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -423,13 +452,35 @@ function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 md:p-8">
             <MotionLink
               className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
+              to="/project/spear"
+              {...globalRevealProps}
+            >
+              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300 flex items-center justify-center bg-gray-50/50">
+                <img
+                  alt="Spear Hospitality Management"
+                  className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
+                  src="/spear-showcase.png"
+                />
+              </div>
+              <div className="p-8 flex flex-col justify-between">
+                <div className="flex justify-between items-start mb-6">
+                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">Spear - Hotel PMS & Restaurant POS</h3>
+                  <span className="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
+                </div>
+                <div className="font-mono text-xs tracking-widest uppercase text-gray-500 group-hover:text-black transition-colors mt-auto">
+                  DETAILS <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                </div>
+              </div>
+            </MotionLink>
+            <MotionLink
+              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
               to="/project/bakery-os"
               {...globalRevealProps}
             >
-              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300 flex items-center justify-center bg-gray-50/50">
                 <img
                   alt="BakeryOS Cashier Portal"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                  className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
                   src="/bakery-showcase.png"
                 />
               </div>
@@ -448,38 +499,16 @@ function LandingPage() {
               to="/project/hris-command-center"
               {...globalRevealProps}
             >
-              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
+              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300 flex items-center justify-center bg-gray-50/50">
                 <img
                   alt="HRIS Command Center"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                  className="w-full h-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
                   src="/image(5).png"
                 />
               </div>
               <div className="p-8 flex flex-col justify-between">
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">HRIS Command Center</h3>
-                  <span className="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
-                </div>
-                <div className="font-mono text-xs tracking-widest uppercase text-gray-500 group-hover:text-black transition-colors mt-auto">
-                  DETAILS <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
-                </div>
-              </div>
-            </MotionLink>
-            <MotionLink
-              className="block flex flex-col group hover:bg-gray-50 transition-colors bg-white overflow-hidden border border-gray-300"
-              to="/project/bespoke-salon"
-              {...globalRevealProps}
-            >
-              <div className="p-6 md:p-8 overflow-hidden w-full h-48 md:h-64 border-b border-gray-300">
-                <img
-                  alt="Bespoke Salon Portal"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
-                  src="/salon-showcase.png"
-                />
-              </div>
-              <div className="p-8 flex flex-col justify-between">
-                <div className="flex justify-between items-start mb-6">
-                  <h3 className="font-bold text-lg group-hover:underline decoration-2 underline-offset-4">Bespoke Salon Portal</h3>
                   <span className="material-symbols-outlined text-gray-300 group-hover:text-black transition-colors">arrow_outward</span>
                 </div>
                 <div className="font-mono text-xs tracking-widest uppercase text-gray-500 group-hover:text-black transition-colors mt-auto">
@@ -522,42 +551,77 @@ function LandingPage() {
               className="w-full md:w-[50%] p-6 md:p-16 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
               {...globalRevealProps}
             >
-              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+              <form onSubmit={handleSubmit} className="space-y-8 relative">
+
+                <input type="hidden" name="access_key" value="ee215dd3-7169-4d3b-9de9-596561d47a29" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <label className="block font-mono text-xs uppercase text-black mb-3" htmlFor="name">Name</label>
                     <input
+                      name="name"
                       className="border border-gray-300 w-full p-3 bg-white outline-none focus:border-black transition-colors font-mono text-sm rounded-none"
                       id="name"
-                      placeholder="JANE DOE"
+                      placeholder="ENTER YOUR NAME"
                       type="text"
+                      required
                     />
                   </div>
                   <div>
                     <label className="block font-mono text-xs uppercase text-black mb-3" htmlFor="email">Email</label>
                     <input
+                      name="email"
                       className="border border-gray-300 w-full p-3 bg-white outline-none focus:border-black transition-colors font-mono text-sm rounded-none"
                       id="email"
-                      placeholder="JANE@EXAMPLE.COM"
+                      placeholder="ENTER YOUR EMAIL"
                       type="email"
+                      required
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block font-mono text-xs uppercase text-black mb-3" htmlFor="message">Message</label>
                   <textarea
+                    name="message"
                     className="border border-gray-300 w-full p-3 bg-white outline-none focus:border-black transition-colors font-mono text-sm resize-none rounded-none"
                     id="message"
                     placeholder="TELL US ABOUT YOUR PROJECT..."
                     rows="4"
+                    required
                   />
                 </div>
                 <button
-                  className="w-full bg-black text-white px-6 py-4 font-mono uppercase text-sm border border-black hover:bg-white hover:text-black transition-colors mt-8"
+                  className="w-full bg-black text-white px-6 py-4 font-mono uppercase text-sm border border-black hover:bg-white hover:text-black transition-colors mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
                   type="submit"
+                  disabled={formStatus === 'submitting'}
                 >
-                  Transmit Data
+                  {formStatus === 'submitting' ? 'Transmitting...' : 'Transmit Data'}
                 </button>
+
+                <AnimatePresence>
+                  {formStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute bottom-20 right-0 left-0 mx-auto w-max bg-[#F0FDF4] border border-[#BBF7D0] text-[#166534] px-6 py-4 rounded-none shadow-sm font-mono text-xs flex items-center justify-center gap-3 z-50 uppercase tracking-widest"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">check_circle</span>
+                      Data Transmitted Successfully
+                    </motion.div>
+                  )}
+                  {formStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute bottom-20 right-0 left-0 mx-auto w-max bg-[#FEF2F2] border border-[#FECACA] text-[#991B1B] px-6 py-4 rounded-none shadow-sm font-mono text-xs flex items-center justify-center gap-3 z-50 uppercase tracking-widest"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">error</span>
+                      Transmission Failed. Try Again.
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </form>
             </motion.div>
           </div>
@@ -577,6 +641,7 @@ export default function App() {
         <Route path="/project/bakery-os" element={<BakeryDashboard />} />
         <Route path="/project/hris-command-center" element={<HrisDashboard />} />
         <Route path="/project/bespoke-salon" element={<BespokeSalon />} />
+        <Route path="/project/spear" element={<SpearDashboard />} />
         <Route path="/showcase" element={<ShowcaseArchive />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
