@@ -12,6 +12,12 @@ const globalRevealProps = {
 
 const allProjects = [
     {
+        id: 'spear',
+        title: 'Spear - All-in-One Hospitality Management Software: Hotel PMS & Restaurant POS',
+        to: '/project/spear',
+        image: '/spear-showcase.png'
+    },
+    {
         id: 'fintech',
         title: 'BakeryOS Cashier Portal',
         to: '/project/bakery-os',
@@ -79,12 +85,12 @@ const RelatedProjects = ({ currentProject, isDarkTheme = false }) => {
                             to={project.to}
                             {...globalRevealProps}
                         >
-                            <div className={`overflow-hidden w-full h-48 md:h-64 border-b ${
+                            <div className={`overflow-hidden w-full h-48 md:h-64 border-b flex items-center justify-center ${isDarkTheme ? 'bg-[#0b0f19]' : 'bg-gray-50/50'} ${
                                 isDarkTheme ? 'border-white/10' : 'border-gray-300'
                             }`}>
                                 <img
                                     alt={project.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out"
                                     src={project.image}
                                 />
                             </div>
